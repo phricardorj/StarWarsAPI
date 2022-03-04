@@ -1,4 +1,4 @@
-# 🌌 StarWarsAPI 🚀
+# 🌌 StarWars API Restful 🚀
 
 # ⚙️ Tecnologias usadas neste projeto
 
@@ -6,4 +6,3 @@
 - [Maven](https://maven.apache.org/)
 - [Lombok](https://projectlombok.org/)
 
----
