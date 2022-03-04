@@ -1,7 +1,6 @@
 package br.com.letscode.StarWarsAPI.controller;
 
 import br.com.letscode.StarWarsAPI.dto.RequestRebelde;
-import br.com.letscode.StarWarsAPI.model.Database;
 import br.com.letscode.StarWarsAPI.model.Rebelde;
 import br.com.letscode.StarWarsAPI.service.RebeldeService;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +16,7 @@ public class RebeldeController {
 
     @GetMapping
     public List<Rebelde> listaRebeldes(){
-        return Database.getRebeldes();
+        return Rebelde.getRebeldes();
     }
 
     @PostMapping

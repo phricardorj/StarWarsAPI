@@ -4,9 +4,11 @@ package br.com.letscode.StarWarsAPI.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
-@Getter @Setter
+@Setter @Getter
 public class Rebelde {
     private UUID id;
     private String nome;
@@ -16,6 +18,9 @@ public class Rebelde {
     private Inventario inventario;
     private boolean Traidor = false;
 
+    @Getter
+    private static List<Rebelde> rebeldes = new ArrayList<>();
+
     public Rebelde(UUID id, String nome, int idade, Genero genero, Localizacao localizacao, Inventario inventario){
         this.id = id;
         this.nome = nome;
@@ -23,6 +28,10 @@ public class Rebelde {
         this.genero = genero;
         this.localizacao = localizacao;
         this.inventario = inventario;
+    }
+
+    public static void add(Rebelde rebelde){
+        Rebelde.rebeldes.add(rebelde);
     }
 
 }
