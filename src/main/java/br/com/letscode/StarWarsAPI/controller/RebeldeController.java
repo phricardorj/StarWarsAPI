@@ -1,7 +1,8 @@
 package br.com.letscode.StarWarsAPI.controller;
 
 import br.com.letscode.StarWarsAPI.dto.RequestRebelde;
-import br.com.letscode.StarWarsAPI.model.*;
+import br.com.letscode.StarWarsAPI.model.Database;
+import br.com.letscode.StarWarsAPI.model.Rebelde;
 import br.com.letscode.StarWarsAPI.service.RebeldeService;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +10,6 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @RestController
 @RequestMapping("/rebeldes")
