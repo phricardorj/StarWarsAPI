@@ -1,6 +1,6 @@
 # 🌌 StarWars API Restful 🚀
 
-# ⚙️ Tecnologias usadas neste projeto
+# ⚙️ Tecnologias usadas:
 
 - [Java](https://www.java.com/)
 - [Maven](https://maven.apache.org/)
