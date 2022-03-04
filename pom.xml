@@ -12,7 +12,7 @@
 	<artifactId>StarWarsAPI</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>StarWarsAPI</name>
-	<description>Demo project for Spring Boot</description>
+	<description>StarWarsAPI project for let`s code fullstack degree</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
