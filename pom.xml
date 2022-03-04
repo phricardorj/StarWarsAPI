@@ -14,7 +14,7 @@
 	<name>StarWarsAPI</name>
 	<description>StarWarsAPI project for let`s code fullstack degree</description>
 	<properties>
-		<java.version>11.0.3</java.version>
+		<java.version>11</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
