@@ -16,7 +16,6 @@ public class RebeldeService {
         Inventario inventario = new Inventario(form.getQtdArmas(), form.getQtdAgua(), form.getQtdMunicao(), form.getQtdComida());
         Rebelde rebelde = new Rebelde(UUID.randomUUID(),form.getNome(), form.getIdade(), genero, localizacao, inventario);
         Rebelde.add(rebelde);
-
         return rebelde;
     }
 
