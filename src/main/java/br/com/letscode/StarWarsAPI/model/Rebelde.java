@@ -16,7 +16,7 @@ public class Rebelde {
     private Genero genero;
     private Localizacao localizacao;
     private Inventario inventario;
-    private boolean Traidor = false;
+    private boolean traidor;
 
     @Getter @Setter
     private static List<Rebelde> rebeldes = new ArrayList<>();
@@ -28,6 +28,7 @@ public class Rebelde {
         this.genero = genero;
         this.localizacao = localizacao;
         this.inventario = inventario;
+        this.traidor = false;
     }
 
     public static void add(Rebelde rebelde){

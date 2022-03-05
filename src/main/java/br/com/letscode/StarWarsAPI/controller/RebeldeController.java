@@ -58,4 +58,9 @@ public class RebeldeController {
         return rebelLoc;
     }
 
+    @GetMapping("/traidores")
+    public List<Rebelde> getTraidores(){
+        return listaRebeldes().stream().filter(rebelde -> rebelde.isTraidor()).collect(Collectors.toList());
+    }
+
 }
