@@ -21,7 +21,7 @@ public class RebeldeController {
         return Rebelde.getRebeldes();
     }
 
-    @PostMapping
+    @PostMapping @ResponseStatus(HttpStatus.CREATED)
     public Rebelde cadastrar(@RequestBody @Valid RequestRebelde form){
         return RebeldeService.cadastrarRebelde(form);
     }
@@ -49,7 +49,7 @@ public class RebeldeController {
         return listaRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).findFirst().get().getLocalizacao();
     }
 
-    @PutMapping("/localizacao/{id}") @ResponseStatus(HttpStatus.CREATED)
+    @PutMapping("/localizacao/{id}")
     public Localizacao alterarLocalizacao(@PathVariable UUID id, @RequestBody Localizacao localizacao){
         Localizacao rebelLoc = listaRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).findFirst().get().getLocalizacao();
         rebelLoc.setLatitude(localizacao.getLatitude());
