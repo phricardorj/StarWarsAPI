@@ -26,7 +26,7 @@ public class RebeldeController {
         return listaRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).findFirst().get().getLocalizacao();
     }
 
-    @PatchMapping("/atualizar/{id}")@ResponseStatus(HttpStatus.CREATED)
+    @PutMapping("/atualizar/{id}")@ResponseStatus(HttpStatus.CREATED)
     public Localizacao listarLoc(@PathVariable UUID id, @RequestBody Localizacao localizacao){
         Localizacao rebelLoc = listaRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).findFirst().get().getLocalizacao();
         rebelLoc.setLatitude(localizacao.getLatitude());
