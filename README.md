@@ -21,11 +21,31 @@
 
 ## API Mapping
 
-Assumimos que o artefato esteja rodando localmente na porta 8080.
+1. (POST) `/rebeldes` - Cadastrar um novo Rebelde
+2. (GET) `/rebeldes` - Listar todos os Rebeldes cadastrados
+3. (GET) `/rebeldes/{id}` - Selecionar específico Rebelde pela sua ID
+4. (DELETE) `/rebeldes/{id}` - Deletar específico Rebelde pela sua ID
+
+###### Segue abaixo um modelo de Json para cadastrar um novo Rebelde
+
+```Json 
+{
+  "nome": "Rebeldeson",
+  "idade": 30,
+  "latitude": -21.22,
+  "logintude": -22.33,
+  "genero": "masculino",
+  "nomeGalaxia": "Andromeda",
+  "qtdArmas": 1,
+  "qtdAgua": 3,
+  "qtdMunicao": 6,
+  "qtdComida": 13
+}
+```
 
 ### Atualizar Localização do rebelde
-1. (get) http://localhost:8080/rebeldes/listarloc/(id)  Verifica local do Rebelde.
-2. (put) http://localhost:8080/rebeldes/atualizar/(id) Atualiza Localização do rebelde
+1. (GET) `/rebeldes/listarloc/(id)` - Selecionar localização de um Rebelde específico pela sua ID
+2. (PUT) `/rebeldes/atualizar/(id)` - Atualizar localização de um Rebelde específico pela sua ID
 
 ###### Segue abaixo um modelo de Json para atualizar a localização do rebelde
 
