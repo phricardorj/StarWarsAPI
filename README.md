@@ -7,11 +7,11 @@
 - [Lombok](https://projectlombok.org/)
 
 ## Checklist:
-[x] - Arquitetura e Modelos
-[x] - Aicionar rebeldes `POST - endpoint: /rebeldes`
-[X] - Listar Rebeldes  `GET - endpoint: /rebeldes`
-[X] - Selecionar Rebelde pela ID `endpoint: /rebeldes/{id}`
-[] - Atualizar localização do rebelde `endpoint: /rebeldes/aturalizar/{id}/long/lat/nomeGalaxia`
-[] - Reportar o rebelde como um traidor `endpoint: /rebeldes/reportar/{id}`
-[] - Negociar itens `endpoint: /rebeldes/negociar/nome-do-intem/{id1}/{id2}`
+[x] - Arquitetura e Modelos<br>
+[x] - Aicionar rebeldes `POST - endpoint: /rebeldes`<br>
+[X] - Listar Rebeldes  `GET - endpoint: /rebeldes`<br>
+[X] - Selecionar Rebelde pela ID `endpoint: /rebeldes/{id}`<br>
+[] - Atualizar localização do rebelde `endpoint: /rebeldes/aturalizar/{id}/long/lat/nomeGalaxia`<br>
+[] - Reportar o rebelde como um traidor `endpoint: /rebeldes/reportar/{id}`<br>
+[] - Negociar itens `endpoint: /rebeldes/negociar/nome-do-intem/{id1}/{id2}`<br>
 [] - Relatórios `endpoint: /rebeldes/relatorio`
