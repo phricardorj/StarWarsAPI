@@ -8,7 +8,7 @@
 
 ## ✅ Checklist:
 [✔] - Arquitetura e Modelos<br>
-[✔] - Aicionar rebeldes `POST - endpoint: /rebeldes`<br>
+[✔] - Adicionar rebeldes `POST - endpoint: /rebeldes`<br>
 [✔] - Listar Rebeldes  `GET - endpoint: /rebeldes`<br>
 [✔] - Selecionar Rebelde pela ID `endpoint: /rebeldes/{id}`<br>
 [❌] - Atualizar localização do rebelde `endpoint: /rebeldes/atualizar/{id}/long/lat/nomeGalaxia`@Israel <br> 
