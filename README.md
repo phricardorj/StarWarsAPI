@@ -15,3 +15,41 @@
 [❌] - Reportar o rebelde como um traidor `endpoint: /rebeldes/reportar/{id}` [@Lucas Suplino](https://github.com/LucasSuplino) <br> 
 [❌] - Negociar itens `endpoint: /rebeldes/negociar/nome-do-intem/{id1}/{id2}` [@Thiago Assi](https://github.com/AloneInAbyss) <br>
 [❌] - Relatórios `endpoint: /rebeldes/relatorio`
+
+## 🖖 Squad Members<br>
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/phricardorj">
+        <img src="https://avatars.githubusercontent.com/u/70300680" width="100px;" alt="phricardorj"/><br>
+        <sub>
+          <b>Pedro Ricardo</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/AloneInAbyss">
+        <img src="https://avatars.githubusercontent.com/u/37054274" width="100px;" alt="AloneInAbyss"/><br>
+        <sub>
+          <b>Thiago Assi</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/israelcena">
+        <img src="https://avatars.githubusercontent.com/u/1072865" width="100px;" alt="israelcena"/><br>
+        <sub>
+          <b>Israel Cena</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/LucasSuplino">
+        <img src="https://avatars.githubusercontent.com/u/31294320" width="100px;" alt="LucasSuplino"/><br>
+        <sub>
+          <b>Lucas Suplino</b>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>
