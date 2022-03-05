@@ -7,9 +7,9 @@
 - [Lombok](https://projectlombok.org/)
 
 ## ✅ Checklist:
-[✔] - Arquitetura e Modelos<br>
-[✔] - Adicionar rebeldes `POST - endpoint: /rebeldes`<br>
-[✔] - Listar Rebeldes  `GET - endpoint: /rebeldes`<br>
+[✔] - Arquitetura e Modelos @Pedro Ricardo<br>
+[✔] - Adicionar rebeldes `POST - endpoint: /rebeldes` @Pedro Ricardo<br>
+[✔] - Listar Rebeldes  `GET - endpoint: /rebeldes` @Pedro Ricardo<br>
 [✔] - Selecionar Rebelde pela ID `endpoint: /rebeldes/{id}`<br>
 [❌] - Atualizar localização do rebelde `endpoint: /rebeldes/atualizar/{id}/long/lat/nomeGalaxia`@Israel <br> 
 [❌] - Reportar o rebelde como um traidor `endpoint: /rebeldes/reportar/{id}`@Lucas <br> 
