@@ -14,4 +14,4 @@
 [❌] - Atualizar localização do rebelde `endpoint: /rebeldes/atualizar/{id}/long/lat/nomeGalaxia` [@Israel Cena](https://github.com/israelcena)<br> 
 [❌] - Reportar o rebelde como um traidor `endpoint: /rebeldes/reportar/{id}` [@Lucas Suplino](https://github.com/LucasSuplino) <br> 
 [❌] - Negociar itens `endpoint: /rebeldes/negociar/nome-do-intem/{id1}/{id2}` [@Thiago Assi](https://github.com/AloneInAbyss) <br>
-[❌] - Relatórios `endpoint: /rebeldes/relatorio` @Todos
+[❌] - Relatórios `endpoint: /rebeldes/relatorio`
