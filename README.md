@@ -6,7 +6,7 @@
 - [Maven](https://maven.apache.org/)
 - [Lombok](https://projectlombok.org/)
 
-## Checklist:
+## ✅ Checklist:
 [x] - Arquitetura e Modelos<br>
 [x] - Aicionar rebeldes `POST - endpoint: /rebeldes`<br>
 [X] - Listar Rebeldes  `GET - endpoint: /rebeldes`<br>
