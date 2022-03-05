@@ -1,5 +1,7 @@
 package br.com.letscode.StarWarsAPI.dto;
 
+import br.com.letscode.StarWarsAPI.model.Inventario;
+import br.com.letscode.StarWarsAPI.model.Localizacao;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,9 +9,7 @@ import lombok.Setter;
 public class RequestRebelde {
     private String nome;
     private int idade;
-    private double latitude;
-    private double logintude;
     private String genero;
-    private String nomeGalaxia;
-    private int qtdArmas, qtdAgua, qtdMunicao, qtdComida;
+    private Localizacao localizacao;
+    private Inventario inventario;
 }
