@@ -16,6 +16,7 @@
 [❌] - Reportar o rebelde como um traidor `PATCH - endpoint: /rebeldes/reportar/{id}` [@Lucas Suplino](https://github.com/LucasSuplino) <br> 
 [❌] - Negociar itens `PUT - endpoint: /rebeldes/negociar/{nome-do-intem}/{id1}/{id2}` [@Thiago Assi](https://github.com/AloneInAbyss) <br>
 [❌] - Relatórios `GET - endpoint: /rebeldes/relatorio`
+[❌] - Tratamento das Exceções - STATUS HTTP: 200 (OK), 201 (Created), 204 (No Content), 422 (Unprocessable Entity)
 
 ## 🖖 Squad Members<br>
 <table>
