@@ -56,9 +56,9 @@
 
 ```Json 
 {
-"latitude": -15.22,
-"longitude": -10.33,
-"nome": "Andromeda"
+  "latitude": -15.22,
+  "longitude": -10.33,
+  "nome": "Andromeda"
 }
 ```
 
