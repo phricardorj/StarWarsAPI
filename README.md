@@ -20,6 +20,8 @@
 
 ## API Mapping
 
+Assumimos que o artefato esteja rodando localmente na porta 8080.
+
 ### Atualizar Localização do rebelde
 1. (get) http://localhost:8080/rebeldes/listarloc/(id)  Verifica local do Rebelde.
 2. (put) http://localhost:8080/rebeldes/atualizar/(id) Atualiza Localização do rebelde
