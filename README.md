@@ -12,8 +12,8 @@
 [✔] - Listar Rebeldes  `GET - endpoint: /rebeldes` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [✔] - Selecionar Rebelde pela ID `GET - endpoint: /rebeldes/{id}` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [✔] - Deletar Rebelde pela ID `DELETE - endpoint: /rebeldes/{id}`[@Pedro Ricardo](https://github.com/phricardorj/)<br>
-[✔] - Atualizar localização do rebelde `PUT - endpoint: /rebeldes/atualizar/{id}/` [@Israel Cena](https://github.com/israelcena)<br> 
-[✔] - Listar localização do rebelde `GET - endpoint: /rebeldes/listarloc/(id)` [@Israel Cena](https://github.com/israelcena)<br> 
+[✔] - Atualizar localização do rebelde `PUT - endpoint: /rebeldes/localizacao/{id}/` [@Israel Cena](https://github.com/israelcena)<br> 
+[✔] - Listar localização do rebelde `GET - endpoint: /rebeldes/localizacao/(id)` [@Israel Cena](https://github.com/israelcena)<br> 
 [❌] - Reportar o rebelde como um traidor `PATCH - endpoint: /rebeldes/reportar/{id}` [@Lucas Suplino](https://github.com/LucasSuplino) <br> 
 [❌] - Negociar itens `PUT - endpoint: /rebeldes/negociar/{nome-do-intem}/{id1}/{id2}` [@Thiago Assi](https://github.com/AloneInAbyss) <br>
 [❌] - Relatórios `GET - endpoint: /rebeldes/relatorio` <br>
@@ -44,8 +44,8 @@
 ```
 
 ### Atualizar Localização do rebelde
-1. (GET) `/rebeldes/listarloc/(id)` - Selecionar localização de um Rebelde específico pela sua ID
-2. (PUT) `/rebeldes/atualizar/(id)` - Atualizar localização de um Rebelde específico pela sua ID
+1. (GET) `/rebeldes/localizacao/(id)` - Selecionar localização de um Rebelde específico pela sua ID
+2. (PUT) `/rebeldes/localizacao/(id)` - Atualizar localização de um Rebelde específico pela sua ID
 
 ###### Segue abaixo um modelo de Json para atualizar a localização do rebelde
 
