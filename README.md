@@ -33,14 +33,18 @@
 {
   "nome": "Rebeldeson",
   "idade": 30,
-  "latitude": -21.22,
-  "logintude": -22.33,
   "genero": "masculino",
-  "nomeGalaxia": "Andromeda",
-  "qtdArmas": 1,
-  "qtdAgua": 3,
-  "qtdMunicao": 6,
-  "qtdComida": 13
+  "localizacao": {
+     "latitude": -21.22,
+     "logintude": -22.33,
+     "nome": "Andromeda"
+  },
+    "inventario": {
+      "qtdArmas": 1,
+      "qtdAgua": 3,
+      "qtdMunicao": 6,
+      "qtdComida": 13
+  }
 }
 ```
 
