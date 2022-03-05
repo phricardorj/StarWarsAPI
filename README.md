@@ -11,11 +11,12 @@
 [✔] - Adicionar rebeldes `POST - endpoint: /rebeldes` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [✔] - Listar Rebeldes  `GET - endpoint: /rebeldes` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [✔] - Selecionar Rebelde pela ID `GET - endpoint: /rebeldes/{id}` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
-[✔] - Deletar Rebelde pela ID `DELETE - endpoint: /rebeldes/{id}`<br>
 [✔] - Atualizar localização do rebelde `PUT - endpoint: /rebeldes/atualizar/{id}/{long}/{lat}/{nomeGalaxia}` [@Israel Cena](https://github.com/israelcena)<br> 
+[✔] - Deletar Rebelde pela ID `DELETE - endpoint: /rebeldes/{id}`[@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [❌] - Reportar o rebelde como um traidor `PATCH - endpoint: /rebeldes/reportar/{id}` [@Lucas Suplino](https://github.com/LucasSuplino) <br> 
 [❌] - Negociar itens `PUT - endpoint: /rebeldes/negociar/{nome-do-intem}/{id1}/{id2}` [@Thiago Assi](https://github.com/AloneInAbyss) <br>
-[❌] - Relatórios `GET - endpoint: /rebeldes/relatorio`
+[❌] - Relatórios `GET - endpoint: /rebeldes/relatorio` <br>
+[❌] - Tratamento das Exceções - STATUS HTTP: 200 (OK), 201 (Created), 204 (No Content), 422 (Unprocessable Entity)
 
 ## API Mapping
 

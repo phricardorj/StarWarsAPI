@@ -18,7 +18,7 @@ public class Rebelde {
     private Inventario inventario;
     private boolean Traidor = false;
 
-    @Getter
+    @Getter @Setter
     private static List<Rebelde> rebeldes = new ArrayList<>();
 
     public Rebelde(UUID id, String nome, int idade, Genero genero, Localizacao localizacao, Inventario inventario){
