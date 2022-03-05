@@ -11,7 +11,7 @@
 [✔] - Adicionar rebeldes `POST - endpoint: /rebeldes` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [✔] - Listar Rebeldes  `GET - endpoint: /rebeldes` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [✔] - Selecionar Rebelde pela ID `GET - endpoint: /rebeldes/{id}` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
-[✔] - Atualizar localização do rebelde `PUT - endpoint: /rebeldes/atualizar/{id}/{long}/{lat}/{nomeGalaxia}` [@Israel Cena](https://github.com/israelcena)<br> 
+[✔] - Atualizar localização do rebelde `PUT - endpoint: /rebeldes/atualizar/{id}/` [@Israel Cena](https://github.com/israelcena)<br> 
 [✔] - Deletar Rebelde pela ID `DELETE - endpoint: /rebeldes/{id}`[@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [❌] - Reportar o rebelde como um traidor `PATCH - endpoint: /rebeldes/reportar/{id}` [@Lucas Suplino](https://github.com/LucasSuplino) <br> 
 [❌] - Negociar itens `PUT - endpoint: /rebeldes/negociar/{nome-do-intem}/{id1}/{id2}` [@Thiago Assi](https://github.com/AloneInAbyss) <br>
