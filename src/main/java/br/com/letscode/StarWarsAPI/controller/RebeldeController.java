@@ -21,21 +21,6 @@ public class RebeldeController {
         return Rebelde.getRebeldes();
     }
 
-    @GetMapping("/listarloc/{id}")
-    public Localizacao listarLoc(@PathVariable UUID id) {
-        return listaRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).findFirst().get().getLocalizacao();
-    }
-
-    @PutMapping("/atualizar/{id}")@ResponseStatus(HttpStatus.CREATED)
-    public Localizacao listarLoc(@PathVariable UUID id, @RequestBody Localizacao localizacao){
-        Localizacao rebelLoc = listaRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).findFirst().get().getLocalizacao();
-        rebelLoc.setLatitude(localizacao.getLatitude());
-        rebelLoc.setLongitude(localizacao.getLongitude());
-        rebelLoc.setNome(localizacao.getNome());
-        return rebelLoc;
-    }
-
-
     @PostMapping
     public Rebelde cadastrar(@RequestBody @Valid RequestRebelde form){
         return RebeldeService.cadastrarRebelde(form);
@@ -57,6 +42,20 @@ public class RebeldeController {
             }
         }
         return null;
+    }
+
+    @GetMapping("/localizacao/{id}")
+    public Localizacao localizar(@PathVariable UUID id) {
+        return listaRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).findFirst().get().getLocalizacao();
+    }
+
+    @PutMapping("/localizacao/{id}") @ResponseStatus(HttpStatus.CREATED)
+    public Localizacao alterarLocalizacao(@PathVariable UUID id, @RequestBody Localizacao localizacao){
+        Localizacao rebelLoc = listaRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).findFirst().get().getLocalizacao();
+        rebelLoc.setLatitude(localizacao.getLatitude());
+        rebelLoc.setLongitude(localizacao.getLongitude());
+        rebelLoc.setNome(localizacao.getNome());
+        return rebelLoc;
     }
 
 }
