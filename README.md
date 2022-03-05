@@ -19,7 +19,7 @@
 [❌] - Relatórios `GET - endpoint: /rebeldes/relatorio` <br>
 [❌] - Tratamento das Exceções - STATUS HTTP: 200 (OK), 201 (Created), 204 (No Content), 422 (Unprocessable Entity)
 
-## API Mapping
+## 🗺️ API Mapping
 
 1. (POST) `/rebeldes` - Cadastrar um novo Rebelde
 2. (GET) `/rebeldes` - Listar todos os Rebeldes cadastrados
