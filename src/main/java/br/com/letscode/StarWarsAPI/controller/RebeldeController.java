@@ -29,4 +29,17 @@ public class RebeldeController {
         return listaRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).collect(Collectors.toList());
     }
 
+    @DeleteMapping("/{id}")
+    public String deletar(@PathVariable UUID id) {
+        for (Rebelde r : listaRebeldes()) {
+            if (r.getId().equals(id)) {
+                if(listaRebeldes().remove(r)){
+                    Rebelde.setRebeldes(listaRebeldes());
+                    return "Rebelde " + r.getNome().toUpperCase() + " removido com sucesso!";
+                }
+            }
+        }
+        return null;
+    }
+
 }
