@@ -6,7 +6,7 @@
 - [Maven](https://maven.apache.org/)
 - [Lombok](https://projectlombok.org/)
 
-## ✅ Checklist:
+## ✅ Tasks:
 [✔] - Arquitetura e Modelos [@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [✔] - Adicionar rebeldes `POST - endpoint: /rebeldes` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [✔] - Listar Rebeldes  `GET - endpoint: /rebeldes` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
