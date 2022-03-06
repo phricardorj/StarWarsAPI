@@ -12,14 +12,14 @@
 [✔] - Listar Rebeldes  `GET - endpoint: /rebeldes` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [✔] - Selecionar Rebelde pela ID `GET - endpoint: /rebeldes/{id}` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [✔] - Deletar Rebelde pela ID `DELETE - endpoint: /rebeldes/{id}`[@Pedro Ricardo](https://github.com/phricardorj/)<br>
-[✔] - Atualizar localização do rebelde `PUT - endpoint: /rebeldes/localizacao/{id}/` [@Israel Cena](https://github.com/israelcena)<br> 
-[✔] - Listar localização do rebelde `GET - endpoint: /rebeldes/localizacao/(id)` [@Israel Cena](https://github.com/israelcena)<br> 
-[❌] - Reportar o rebelde como um traidor `PATCH - endpoint: /rebeldes/reportar/{id}` [@Lucas Suplino](https://github.com/LucasSuplino) <br> 
+[✔] - Atualizar localização do rebelde `PUT - endpoint: /rebeldes/localizacao/{id}/` [@Israel Cena](https://github.com/israelcena)<br>
+[✔] - Listar localização do rebelde `GET - endpoint: /rebeldes/localizacao/(id)` [@Israel Cena](https://github.com/israelcena)<br>
+[✔] - Reportar o rebelde como um traidor `PATCH - endpoint: /rebeldes/reportar/{id}` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [✔] - Listar Rebeldes traidores `GET - endpoint: /rebeldes/traidores`[@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [❌] - Negociar itens `PUT - endpoint: /rebeldes/negociar/{nome-do-intem}/{id1}/{id2}` [@Thiago Assi](https://github.com/AloneInAbyss) <br>
-[❌] - Relatórios `GET - endpoint: /rebeldes/relatorio` <br>
-[❌] - Adicionar URI para retornar pelo header o endereço do rebelde criado. <br>
-[❌] - Tratamento das Exceções
+[⏳] - Relatórios `GET - endpoint: /rebeldes/relatorio` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
+[❌] - Adicionar URI para retornar pelo header o endereço do rebelde criado. [@Israel Cena](https://github.com/israelcena)<br>
+[❌] - Tratamento das Exceções [@Lucas Suplino](https://github.com/LucasSuplino)
 
 ## 🗺️ API Mapping
 

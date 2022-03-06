@@ -17,6 +17,7 @@ public class Rebelde {
     private Localizacao localizacao;
     private Inventario inventario;
     private boolean traidor;
+    private int numDenuncias;
 
     @Getter @Setter
     private static List<Rebelde> rebeldes = new ArrayList<>();
