@@ -23,7 +23,7 @@
 [❌] - Adicionar URI para retornar pelo header o endereço do rebelde criado. [@Israel Cena](https://github.com/israelcena)<br>
 [❌] - Tratamento das Exceções [@Lucas Suplino](https://github.com/LucasSuplino)
 
-## 🗺️ API Mapping
+## 🗺️ API Documentation
 
 1. (POST) `/rebeldes` - Cadastrar um novo Rebelde
 2. (GET) `/rebeldes` - Listar todos os Rebeldes cadastrados
