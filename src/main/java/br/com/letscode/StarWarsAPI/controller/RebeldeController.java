@@ -110,7 +110,7 @@ public class RebeldeController {
                 fmt.format(porcentagemTraidores) + "%", itensPerdidos());
     }
 
-    @GetMapping("/itens-perdidos")
+    @GetMapping("/traidores/itens-perdidos")
     public int itensPerdidos() {
         int num = 0;
         for (Rebelde r : getTraidores()) {
