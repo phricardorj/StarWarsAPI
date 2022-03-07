@@ -6,23 +6,6 @@
 - [Maven](https://maven.apache.org/)
 - [Lombok](https://projectlombok.org/)
 
-## ✅ Tasks:
-[✔] - Arquitetura e Modelos [@Pedro Ricardo](https://github.com/phricardorj/)<br>
-[✔] - Adicionar rebeldes `POST - endpoint: /rebeldes` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
-[✔] - Listar Rebeldes  `GET - endpoint: /rebeldes` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
-[✔] - Selecionar Rebelde pela ID `GET - endpoint: /rebeldes/{id}` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
-[✔] - Deletar Rebelde pela ID `DELETE - endpoint: /rebeldes/{id}`[@Pedro Ricardo](https://github.com/phricardorj/)<br>
-[✔] - Atualizar localização do rebelde `PUT - endpoint: /rebeldes/localizacao/{id}/` [@Israel Cena](https://github.com/israelcena)<br>
-[✔] - Listar localização do rebelde `GET - endpoint: /rebeldes/localizacao/(id)` [@Israel Cena](https://github.com/israelcena)<br>
-[✔] - Reportar o rebelde como um traidor `PATCH - endpoint: /rebeldes/reportar/{id}` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
-[✔] - Listar Rebeldes traidores `GET - endpoint: /rebeldes/traidores`[@Pedro Ricardo](https://github.com/phricardorj/)<br>
-[❌] - Negociar itens `PUT - endpoint: /rebeldes/negociar/{nome-do-intem}/{id1}/{id2}` [@Thiago Assi](https://github.com/AloneInAbyss) <br>
-[⏳] - Relatórios `GET - endpoint: /rebeldes/relatorio` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
-[✔] - Listar Inventários de todos os Rebeldes `GET - endpoint: /rebeldes/inventarios` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
-[✔] - Retornar o número total de itens perdidos `GET - endpoint: /rebeldes/itens-perdidos` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
-[❌] - Adicionar URI para retornar pelo header o endereço do rebelde criado. [@Israel Cena](https://github.com/israelcena)<br>
-[❌] - Tratamento das Exceções [@Lucas Suplino](https://github.com/LucasSuplino)
-
 ## 🗺️ API Documentation
 
 1. (POST) `/rebeldes` - Cadastrar um novo Rebelde
@@ -66,6 +49,23 @@
   "nome": "Andromeda"
 }
 ```
+
+## ✅ Tasks:
+[✔] - Arquitetura e Modelos [@Pedro Ricardo](https://github.com/phricardorj/)<br>
+[✔] - Adicionar rebeldes `POST - endpoint: /rebeldes` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
+[✔] - Listar Rebeldes  `GET - endpoint: /rebeldes` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
+[✔] - Selecionar Rebelde pela ID `GET - endpoint: /rebeldes/{id}` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
+[✔] - Deletar Rebelde pela ID `DELETE - endpoint: /rebeldes/{id}`[@Pedro Ricardo](https://github.com/phricardorj/)<br>
+[✔] - Atualizar localização do rebelde `PUT - endpoint: /rebeldes/localizacao/{id}/` [@Israel Cena](https://github.com/israelcena)<br>
+[✔] - Listar localização do rebelde `GET - endpoint: /rebeldes/localizacao/(id)` [@Israel Cena](https://github.com/israelcena)<br>
+[✔] - Reportar o rebelde como um traidor `PATCH - endpoint: /rebeldes/reportar/{id}` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
+[✔] - Listar Rebeldes traidores `GET - endpoint: /rebeldes/traidores`[@Pedro Ricardo](https://github.com/phricardorj/)<br>
+[❌] - Negociar itens `PUT - endpoint: /rebeldes/negociar/{nome-do-intem}/{id1}/{id2}` [@Thiago Assi](https://github.com/AloneInAbyss) <br>
+[⏳] - Relatórios `GET - endpoint: /rebeldes/relatorio` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
+[✔] - Listar Inventários de todos os Rebeldes `GET - endpoint: /rebeldes/inventarios` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
+[✔] - Retornar o número total de itens perdidos `GET - endpoint: /rebeldes/itens-perdidos` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
+[❌] - Adicionar URI para retornar pelo header o endereço do rebelde criado. [@Israel Cena](https://github.com/israelcena)<br>
+[❌] - Tratamento das Exceções [@Lucas Suplino](https://github.com/LucasSuplino)
 
 ## 🖖 Squad Members<br>
 <table>
