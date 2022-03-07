@@ -29,6 +29,8 @@
 2. (GET) `/rebeldes` - Listar todos os Rebeldes cadastrados
 3. (GET) `/rebeldes/{id}` - Selecionar específico Rebelde pela sua ID
 4. (DELETE) `/rebeldes/{id}` - Deletar específico Rebelde pela sua ID
+5. (GET) `/rebeldes/inventarios` - Listar Inventários de todos os Rebeldes
+6. (GET) `/rebeldes/itens-perdidos` - Retornar o número total de itens perdidos
 
 ###### Segue abaixo um modelo de Json para cadastrar um novo Rebelde
 
