@@ -1,6 +1,7 @@
 package br.com.letscode.StarWarsAPI.controller;
 
 import br.com.letscode.StarWarsAPI.dto.RequestRebelde;
+import br.com.letscode.StarWarsAPI.model.Inventario;
 import br.com.letscode.StarWarsAPI.model.Localizacao;
 import br.com.letscode.StarWarsAPI.model.Rebelde;
 import br.com.letscode.StarWarsAPI.model.Relatorio;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -69,7 +71,7 @@ public class RebeldeController {
 
     @GetMapping("/traidores")
     public List<Rebelde> getTraidores(){
-        return listaRebeldes().stream().filter(rebelde -> rebelde.isTraidor()).collect(Collectors.toList());
+        return listaRebeldes().stream().filter(Rebelde::isTraidor).collect(Collectors.toList());
     }
 
     @PatchMapping("/reportar/{id}")
@@ -108,6 +110,7 @@ public class RebeldeController {
                 fmt.format(porcentagemTraidores) + "%", itensPerdidos());
     }
 
+    @GetMapping("/itens-perdidos")
     public int itensPerdidos() {
         int num = 0;
         for (Rebelde r : getTraidores()) {
@@ -115,6 +118,17 @@ public class RebeldeController {
                    + r.getInventario().getQtdComida() + r.getInventario().getQtdAgua();
         }
         return num;
+    }
+
+    @GetMapping("/inventarios")
+    public List<Inventario> getInventarios(){
+        List<Inventario> inventarios = new ArrayList<>();
+
+        for (Rebelde r : getRebeldes()) {
+            inventarios.add(r.getInventario());
+        }
+
+        return inventarios;
     }
 
 }
