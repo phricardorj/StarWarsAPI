@@ -13,6 +13,7 @@ import javax.validation.Valid;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -57,12 +58,12 @@ public class RebeldeController {
 
     @GetMapping("/localizacao/{id}")
     public Localizacao localizar(@PathVariable UUID id) {
-        return listaRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).findFirst().get().getLocalizacao();
+        return Objects.requireNonNull(listaRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).findFirst().orElse(null)).getLocalizacao();
     }
 
     @PutMapping("/localizacao/{id}")
     public Localizacao alterarLocalizacao(@PathVariable UUID id, @RequestBody Localizacao localizacao){
-        Localizacao rebelLoc = listaRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).findFirst().get().getLocalizacao();
+        Localizacao rebelLoc = Objects.requireNonNull(listaRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).findFirst().orElse(null)).getLocalizacao();
         rebelLoc.setLatitude(localizacao.getLatitude());
         rebelLoc.setLongitude(localizacao.getLongitude());
         rebelLoc.setNome(localizacao.getNome());
