@@ -1,10 +1,7 @@
 package br.com.letscode.StarWarsAPI.controller;
 
 import br.com.letscode.StarWarsAPI.dto.RequestRebelde;
-import br.com.letscode.StarWarsAPI.model.Inventario;
-import br.com.letscode.StarWarsAPI.model.Localizacao;
-import br.com.letscode.StarWarsAPI.model.Rebelde;
-import br.com.letscode.StarWarsAPI.model.Relatorio;
+import br.com.letscode.StarWarsAPI.model.*;
 import br.com.letscode.StarWarsAPI.service.RebeldeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -107,8 +104,15 @@ public class RebeldeController {
             porcentagemTraidores = (numTraidores * 100f) / total;
         }
 
+        InventarioRelatorio inventarioRelatorio = new InventarioRelatorio(
+                getInventarios().stream().map(Inventario::getQtdArmas).reduce(0, Integer::sum),
+                getInventarios().stream().map(Inventario::getQtdAgua).reduce(0, Integer::sum),
+                getInventarios().stream().map(Inventario::getQtdMunicao).reduce(0, Integer::sum),
+                getInventarios().stream().map(Inventario::getQtdComida).reduce(0, Integer::sum)
+        );
+
         return new Relatorio(fmt.format(porcentagemRebeldes) + "%",
-                fmt.format(porcentagemTraidores) + "%", itensPerdidos());
+                fmt.format(porcentagemTraidores) + "%", itensPerdidos(), inventarioRelatorio);
     }
 
     @GetMapping("/traidores/itens-perdidos")
