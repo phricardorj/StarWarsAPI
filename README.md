@@ -50,6 +50,26 @@
 }
 ```
 
+### Obter/Gerar Relátorio
+1. (GET) `/rebeldes/relatorio` - Devolve as informações dos Rebeldes, Traidores e muito mais
+
+###### Segue abaixo um exemplo do Relátorio retornado pela API em Json
+
+```Json 
+{
+    "porcentagemRebeldes": "80.00%",
+    "porcentagemTraidores": "20.00%",
+    "itensPerdidos": 25,
+    "inventarioRelatorio": {
+        "totalArmas": 4,
+        "totalAgua": 12,
+        "totalMunicao": 24,
+        "totalComida": 52
+    }
+}
+```
+
+
 ## ✅ Tasks:
 [✔] - Arquitetura e Modelos [@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [✔] - Adicionar rebeldes `POST - endpoint: /rebeldes` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
