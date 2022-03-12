@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Setter @Getter
@@ -35,5 +36,6 @@ public class Rebelde {
     public static void add(Rebelde rebelde){
         Rebelde.rebeldes.add(rebelde);
     }
+
 
 }

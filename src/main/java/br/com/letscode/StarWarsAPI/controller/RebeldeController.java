@@ -1,5 +1,6 @@
 package br.com.letscode.StarWarsAPI.controller;
 
+import br.com.letscode.StarWarsAPI.dto.RequestNegociar;
 import br.com.letscode.StarWarsAPI.dto.RequestRebelde;
 import br.com.letscode.StarWarsAPI.model.*;
 import br.com.letscode.StarWarsAPI.service.RebeldeService;
@@ -134,6 +135,24 @@ public class RebeldeController {
         }
 
         return inventarios;
+    }
+
+    @PatchMapping("/negociar")
+    public String negociar(@RequestBody @Valid RequestNegociar negociar){
+        for (Rebelde rebelde_1 : selecionar(negociar.getRemetente())) {
+            for (Rebelde rebelde_2 : selecionar(negociar.getDestinatario())) {
+              if(!rebelde_1.isTraidor()){
+                  if(rebelde_1.getInventario().transfere(rebelde_2, negociar.getItem(), negociar.getQtdItem())){
+                      return "Sucesso!";
+                  } else {
+                      return "Houve um problema ao negociar!";
+                  }
+              } else {
+                  return "Traidor nao pode negociar!";
+              }
+            }
+        }
+        return null;
     }
 
 }
