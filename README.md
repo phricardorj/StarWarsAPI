@@ -69,7 +69,7 @@
 }
 ```
 
-### Negociar Item 
+### Negociar Item (Rebelde para Rebelde)
 1. (PATCH) `/rebeldes/negociar` - Rebeldes conseguem negociar entre eles, traidores não negociam!
 
 ```Json
