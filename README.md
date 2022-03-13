@@ -92,7 +92,7 @@
 [✔] - Listar localização do rebelde `GET - endpoint: /rebeldes/localizacao/(id)` [@Israel Cena](https://github.com/israelcena)<br>
 [✔] - Reportar o rebelde como um traidor `PATCH - endpoint: /rebeldes/reportar/{id}` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [✔] - Listar Rebeldes traidores `GET - endpoint: /rebeldes/traidores`[@Pedro Ricardo](https://github.com/phricardorj/)<br>
-[❌] - Negociar itens `PATCH - endpoint: /rebeldes/negociar` [@Thiago Assi](https://github.com/AloneInAbyss) & [@Pedro Ricardo](https://github.com/phricardorj/)<br>
+[✔] - Negociar itens `PATCH - endpoint: /rebeldes/negociar` [@Thiago Assi](https://github.com/AloneInAbyss) & [@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [✔] - Relatórios `GET - endpoint: /rebeldes/relatorio` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [✔] - Listar Inventários de todos os Rebeldes `GET - endpoint: /rebeldes/inventarios` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [✔] - Retornar o número total de itens perdidos `GET - endpoint: /rebeldes/itens-perdidos` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
