@@ -79,7 +79,7 @@
     "itemReceptor": "comida",
     "qtdItemReceptor": 8,
     "itemFornecedor": "arma",
-    "qtdItemFornecedor": 2,
+    "qtdItemFornecedor": 2
 }
 ```
 
