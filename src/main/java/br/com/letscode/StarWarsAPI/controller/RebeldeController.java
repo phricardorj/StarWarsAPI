@@ -165,17 +165,20 @@ public class RebeldeController {
         HashMap<String, Integer> itensReceptor = new HashMap<>();
         itensReceptor.put(itemReceptor, qtdItemReceptor);
 
-        HashMap<String, Integer> inventarioReceptor = new HashMap<>();
-        HashMap<String, Integer> inventarioFornecedor = new HashMap<>();
+        HashMap<String, Integer> inventarioReceptor;
+        HashMap<String, Integer> inventarioFornecedor;
 
-        inventarioReceptor = receptor.getInventario().transfere(itensReceptor, itensFornecedor);
-        inventarioFornecedor = fornecedor.getInventario().transfere(itensFornecedor, itensReceptor);
+        try {
+            inventarioReceptor = receptor.getInventario().transfere(itensReceptor, itensFornecedor);
+            inventarioFornecedor = fornecedor.getInventario().transfere(itensFornecedor, itensReceptor);
+        } catch (Exception e) {
+            return "Erro ao realizar a operação";
+        }
 
-        System.out.println(inventarioFornecedor);
-        System.out.println(inventarioReceptor);
+        receptor.getInventario().atualizarInventario(inventarioReceptor);
+        fornecedor.getInventario().atualizarInventario(inventarioFornecedor);
 
-        // Retornar Sucesso ou Erro
-        return "";
+        return "Sucesso!";
     }
 
 }

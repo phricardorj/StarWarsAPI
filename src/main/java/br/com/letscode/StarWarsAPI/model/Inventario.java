@@ -20,31 +20,6 @@ public class Inventario {
         this.qtdComida = qtdComida;
     }
 
-    public void addItem(String item, int qtdItem) {
-        switch (item.toLowerCase()) {
-            case "arma":
-                if(this.qtdArmas >= qtdItem) {
-                    this.qtdArmas += qtdItem;
-                }
-                break;
-            case "agua":
-                if(this.qtdAgua >= qtdItem) {
-                    this.qtdAgua += qtdItem;
-                }
-                break;
-            case "municao":
-                if(this.qtdMunicao >= qtdItem) {
-                    this.qtdMunicao += qtdItem;
-                }
-                break;
-            case "comida":
-                if(this.qtdComida >= qtdItem) {
-                    this.qtdComida += qtdItem;
-                }
-                break;
-        }
-    }
-
     public HashMap<String, Integer> transfere(HashMap<String, Integer> itensParaEnviar, HashMap<String, Integer> itensParaReceber) {
         HashMap<String, Integer> novoInventario = new HashMap<>();
         novoInventario.put("arma", this.qtdArmas);
@@ -119,6 +94,27 @@ public class Inventario {
                 break;
         }
         return pontos;
+    }
+
+    public void atualizarInventario(HashMap<String, Integer> novoInventario) {
+        for (String item : novoInventario.keySet()) {
+            switch (item) {
+                case "arma":
+                    this.qtdArmas = novoInventario.get(item);
+                    break;
+                case "municao":
+                    this.qtdMunicao = novoInventario.get(item);
+                    break;
+                case "agua":
+                    this.qtdAgua = novoInventario.get(item);
+                    break;
+                case "comida":
+                    this.qtdComida = novoInventario.get(item);
+                    break;
+                default:
+                    throw new Error("Erro ao atualizar");
+            }
+        }
     }
 
 }
