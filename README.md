@@ -59,12 +59,12 @@
 {
     "porcentagemRebeldes": "80.00%",
     "porcentagemTraidores": "20.00%",
-    "itensPerdidos": 25,
     "inventarioRelatorio": {
         "totalArmas": 4,
         "totalAgua": 12,
         "totalMunicao": 24,
-        "totalComida": 52
+        "totalComida": 52,
+        "itensPerdidos": 25
     }
 }
 ```
