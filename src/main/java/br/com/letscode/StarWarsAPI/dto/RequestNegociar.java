@@ -9,6 +9,8 @@ import java.util.UUID;
 public class RequestNegociar {
     private UUID rebeldeReceptor;
     private UUID rebeldeFornecedor;
-    private String itemDesejado;
-    private int qtdItem;
+    private String itemReceptor;
+    private int qtdItemReceptor;
+    private String itemFornecedor;
+    private int qtdItemFornecedor;
 }

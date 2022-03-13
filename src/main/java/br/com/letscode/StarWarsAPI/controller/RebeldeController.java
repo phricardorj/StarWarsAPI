@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -139,20 +136,46 @@ public class RebeldeController {
 
     @PatchMapping("/negociar")
     public String negociar(@RequestBody @Valid RequestNegociar negociar){
-        for (Rebelde fornecedor : selecionar(negociar.getRebeldeFornecedor())) {
-            for (Rebelde receptor : selecionar(negociar.getRebeldeReceptor())) {
-              if(!receptor.isTraidor()){
-                  if(fornecedor.getInventario().transfere(receptor, negociar.getItemDesejado(), negociar.getQtdItem())){
-                      return "Sucesso!";
-                  } else {
-                      return "Fornecedor não tem quantidade de " + negociar.getItemDesejado() + "(s) suficientemente para troca!";
-                  }
-              } else {
-                  return "Traidor nao pode negociar!";
-              }
-            }
+        Rebelde fornecedor = null;
+        Rebelde receptor = null;
+
+        for (Rebelde f : selecionar(negociar.getRebeldeFornecedor())) {
+            fornecedor = f;
         }
-        return null;
+
+        for (Rebelde r : selecionar(negociar.getRebeldeReceptor())) {
+            receptor = r;
+        }
+
+        if (receptor == null || fornecedor == null) {
+            return "Faltam informações do receptor ou fornecedor";
+        }
+
+        if (receptor.isTraidor() || fornecedor.isTraidor()) {
+            return "Traidor não pode negociar!";
+        }
+
+        String itemFornecedor = negociar.getItemFornecedor();
+        int qtdItemFornecedor = negociar.getQtdItemFornecedor();
+        HashMap<String, Integer> itensFornecedor = new HashMap<>();
+        itensFornecedor.put(itemFornecedor, qtdItemFornecedor);
+
+        String itemReceptor = negociar.getItemReceptor();
+        int qtdItemReceptor = negociar.getQtdItemReceptor();
+        HashMap<String, Integer> itensReceptor = new HashMap<>();
+        itensReceptor.put(itemReceptor, qtdItemReceptor);
+
+        HashMap<String, Integer> inventarioReceptor = new HashMap<>();
+        HashMap<String, Integer> inventarioFornecedor = new HashMap<>();
+
+        inventarioReceptor = receptor.getInventario().transfere(itensReceptor, itensFornecedor);
+        inventarioFornecedor = fornecedor.getInventario().transfere(itensFornecedor, itensReceptor);
+
+        System.out.println(inventarioFornecedor);
+        System.out.println(inventarioReceptor);
+
+        // Retornar Sucesso ou Erro
+        return "";
     }
 
 }
