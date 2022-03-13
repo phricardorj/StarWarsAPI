@@ -1,5 +1,6 @@
 package br.com.letscode.StarWarsAPI.controller;
 
+import br.com.letscode.StarWarsAPI.dto.RequestNegociar;
 import br.com.letscode.StarWarsAPI.dto.RequestRebelde;
 import br.com.letscode.StarWarsAPI.model.*;
 import br.com.letscode.StarWarsAPI.service.RebeldeService;
@@ -8,16 +9,13 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/rebeldes")
 public class RebeldeController {
-    DecimalFormat fmt = new DecimalFormat("0.00");
+    DecimalFormat fmt = new DecimalFormat("0.0");
 
     // Lista com TODOS - retorna Rebeldes e Traidores!
     public List<Rebelde> listaRebeldes(){
@@ -134,6 +132,53 @@ public class RebeldeController {
         }
 
         return inventarios;
+    }
+
+    @PatchMapping("/negociar")
+    public String negociar(@RequestBody @Valid RequestNegociar negociar){
+        Rebelde fornecedor = null;
+        Rebelde receptor = null;
+
+        for (Rebelde f : selecionar(negociar.getRebeldeFornecedor())) {
+            fornecedor = f;
+        }
+
+        for (Rebelde r : selecionar(negociar.getRebeldeReceptor())) {
+            receptor = r;
+        }
+
+        if (receptor == null || fornecedor == null) {
+            return "Faltam informações do receptor ou fornecedor";
+        }
+
+        if (receptor.isTraidor() || fornecedor.isTraidor()) {
+            return "Traidor não pode negociar!";
+        }
+
+        String itemFornecedor = negociar.getItemFornecedor();
+        int qtdItemFornecedor = negociar.getQtdItemFornecedor();
+        HashMap<String, Integer> itensFornecedor = new HashMap<>();
+        itensFornecedor.put(itemFornecedor, qtdItemFornecedor);
+
+        String itemReceptor = negociar.getItemReceptor();
+        int qtdItemReceptor = negociar.getQtdItemReceptor();
+        HashMap<String, Integer> itensReceptor = new HashMap<>();
+        itensReceptor.put(itemReceptor, qtdItemReceptor);
+
+        HashMap<String, Integer> inventarioReceptor;
+        HashMap<String, Integer> inventarioFornecedor;
+
+        try {
+            inventarioReceptor = receptor.getInventario().transfere(itensReceptor, itensFornecedor);
+            inventarioFornecedor = fornecedor.getInventario().transfere(itensFornecedor, itensReceptor);
+        } catch (Exception e) {
+            return "Erro ao realizar a operação";
+        }
+
+        receptor.getInventario().atualizarInventario(inventarioReceptor);
+        fornecedor.getInventario().atualizarInventario(inventarioFornecedor);
+
+        return "Sucesso!";
     }
 
 }

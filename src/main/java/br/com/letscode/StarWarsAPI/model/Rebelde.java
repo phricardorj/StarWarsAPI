@@ -36,4 +36,5 @@ public class Rebelde {
         Rebelde.rebeldes.add(rebelde);
     }
 
+
 }
