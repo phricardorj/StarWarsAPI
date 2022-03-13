@@ -134,7 +134,7 @@ public class RebeldeController {
         return inventarios;
     }
 
-    @PatchMapping("/negociar")
+    @PutMapping("/negociar")
     public String negociar(@RequestBody @Valid RequestNegociar negociar){
         Rebelde fornecedor = null;
         Rebelde receptor = null;
