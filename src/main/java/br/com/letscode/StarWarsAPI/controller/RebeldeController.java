@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/rebeldes")
 public class RebeldeController {
-    DecimalFormat fmt = new DecimalFormat("0.00");
+    DecimalFormat fmt = new DecimalFormat("0.0");
 
     // Lista com TODOS - retorna Rebeldes e Traidores!
     public List<Rebelde> listaRebeldes(){
@@ -145,7 +145,7 @@ public class RebeldeController {
                   if(fornecedor.getInventario().transfere(receptor, negociar.getItem(), negociar.getQtdItem())){
                       return "Sucesso!";
                   } else {
-                      return "Houve um problema ao negociar!";
+                      return "Fornecedor não tem quantidade de " + negociar.getItem() + "(s) suficientemente para troca!";
                   }
               } else {
                   return "Traidor nao pode negociar!";
