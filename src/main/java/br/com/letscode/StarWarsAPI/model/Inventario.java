@@ -45,33 +45,33 @@ public class Inventario {
         }
     }
 
-    public boolean transfere(Rebelde destino, String item, int qtdItem) {
+    public boolean transfere(Rebelde receptor, String item, int qtdItem) {
         switch (item.toLowerCase()) {
             case "arma":
                 if(this.qtdArmas >= qtdItem) {
                     this.qtdArmas -= qtdItem;
-                    destino.getInventario().addItem(item, qtdItem);
+                    receptor.getInventario().addItem(item, qtdItem);
                     return true;
                 }
                 break;
             case "agua":
                 if(this.qtdAgua >= qtdItem) {
                     this.qtdAgua -= qtdItem;
-                    destino.getInventario().addItem(item, qtdItem);
+                    receptor.getInventario().addItem(item, qtdItem);
                     return true;
                 }
                 break;
             case "municao":
                 if(this.qtdMunicao >= qtdItem) {
                     this.qtdMunicao -= qtdItem;
-                    destino.getInventario().addItem(item, qtdItem);
+                    receptor.getInventario().addItem(item, qtdItem);
                     return true;
                 }
                 break;
             case "comida":
                 if(this.qtdComida >= qtdItem) {
                     this.qtdComida -= qtdItem;
-                    destino.getInventario().addItem(item, qtdItem);
+                    receptor.getInventario().addItem(item, qtdItem);
                     return true;
                 }
                 break;

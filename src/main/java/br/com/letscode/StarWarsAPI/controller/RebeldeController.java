@@ -139,10 +139,10 @@ public class RebeldeController {
 
     @PatchMapping("/negociar")
     public String negociar(@RequestBody @Valid RequestNegociar negociar){
-        for (Rebelde rebelde_1 : selecionar(negociar.getRemetente())) {
-            for (Rebelde rebelde_2 : selecionar(negociar.getDestinatario())) {
-              if(!rebelde_1.isTraidor()){
-                  if(rebelde_1.getInventario().transfere(rebelde_2, negociar.getItem(), negociar.getQtdItem())){
+        for (Rebelde fornecedor : selecionar(negociar.getRebeldeFornecedor())) {
+            for (Rebelde receptor : selecionar(negociar.getRebeldeReceptor())) {
+              if(!receptor.isTraidor()){
+                  if(fornecedor.getInventario().transfere(receptor, negociar.getItem(), negociar.getQtdItem())){
                       return "Sucesso!";
                   } else {
                       return "Houve um problema ao negociar!";

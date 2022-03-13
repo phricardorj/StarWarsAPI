@@ -7,8 +7,8 @@ import java.util.UUID;
 
 @Getter @Setter
 public class RequestNegociar {
-    private UUID remetente;
-    private UUID destinatario;
+    private UUID rebeldeReceptor;
+    private UUID rebeldeFornecedor;
     private String item;
     private int qtdItem;
 }
