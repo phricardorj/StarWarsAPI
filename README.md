@@ -69,6 +69,17 @@
 }
 ```
 
+### Negociar Item 
+1. (PATCH) `/rebeldes/negociar` - Rebeldes conseguem negociar entre eles, traidores não negociam!
+
+```Json
+{
+    "rebeldeReceptor": "60443e3d-362a-410e-adc9-2c15546b7508",
+    "rebeldeFornecedor": "a4ba7772-77c8-463e-95b1-bc419a8bf0e5",
+    "itemDesejado": "comida",
+    "qtdItem": 7
+}
+```
 
 ## ✅ Tasks:
 [✔] - Adicionar rebeldes `POST - endpoint: /rebeldes` [@Pedro Ricardo](https://github.com/phricardorj/)<br>

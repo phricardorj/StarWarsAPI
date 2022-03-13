@@ -142,10 +142,10 @@ public class RebeldeController {
         for (Rebelde fornecedor : selecionar(negociar.getRebeldeFornecedor())) {
             for (Rebelde receptor : selecionar(negociar.getRebeldeReceptor())) {
               if(!receptor.isTraidor()){
-                  if(fornecedor.getInventario().transfere(receptor, negociar.getItem(), negociar.getQtdItem())){
+                  if(fornecedor.getInventario().transfere(receptor, negociar.getItemDesejado(), negociar.getQtdItem())){
                       return "Sucesso!";
                   } else {
-                      return "Fornecedor não tem quantidade de " + negociar.getItem() + "(s) suficientemente para troca!";
+                      return "Fornecedor não tem quantidade de " + negociar.getItemDesejado() + "(s) suficientemente para troca!";
                   }
               } else {
                   return "Traidor nao pode negociar!";
