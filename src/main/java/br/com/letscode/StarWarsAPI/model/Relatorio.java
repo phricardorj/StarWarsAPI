@@ -10,13 +10,11 @@ import java.util.List;
 public class Relatorio {
     private String porcentagemRebeldes;
     private String porcentagemTraidores;
-    private int itensPerdidos;
     private InventarioRelatorio inventarioRelatorio;
 
-    public Relatorio(String porcentagemRebeldes, String porcentagemTraidores, int itensPerdidos, InventarioRelatorio inventarioRelatorio) {
+    public Relatorio(String porcentagemRebeldes, String porcentagemTraidores, InventarioRelatorio inventarioRelatorio) {
         this.porcentagemRebeldes = porcentagemRebeldes;
         this.porcentagemTraidores = porcentagemTraidores;
-        this.itensPerdidos = itensPerdidos;
         this.inventarioRelatorio = inventarioRelatorio;
     }
 }

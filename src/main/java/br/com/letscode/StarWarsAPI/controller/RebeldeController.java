@@ -106,11 +106,12 @@ public class RebeldeController {
                 getInventarios().stream().map(Inventario::getQtdArmas).reduce(0, Integer::sum),
                 getInventarios().stream().map(Inventario::getQtdAgua).reduce(0, Integer::sum),
                 getInventarios().stream().map(Inventario::getQtdMunicao).reduce(0, Integer::sum),
-                getInventarios().stream().map(Inventario::getQtdComida).reduce(0, Integer::sum)
+                getInventarios().stream().map(Inventario::getQtdComida).reduce(0, Integer::sum),
+                itensPerdidos()
         );
 
         return new Relatorio(fmt.format(porcentagemRebeldes) + "%",
-                fmt.format(porcentagemTraidores) + "%", itensPerdidos(), inventarioRelatorio);
+                fmt.format(porcentagemTraidores) + "%", inventarioRelatorio);
     }
 
     @GetMapping("/traidores/itens-perdidos")
