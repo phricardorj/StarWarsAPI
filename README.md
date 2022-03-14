@@ -28,9 +28,9 @@
      "nome": "Andromeda"
   },
     "inventario": {
-      "qtdArmas": 1,
-      "qtdAgua": 3,
-      "qtdMunicao": 6,
+      "qtdArmas": 10,
+      "qtdAgua": 30,
+      "qtdMunicao": 8,
       "qtdComida": 13
   }
 }
