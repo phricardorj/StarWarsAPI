@@ -7,6 +7,8 @@ import br.com.letscode.StarWarsAPI.service.RebeldeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.text.DecimalFormat;
 import java.util.*;
@@ -29,8 +31,11 @@ public class RebeldeController {
     }
 
     @PostMapping @ResponseStatus(HttpStatus.CREATED)
-    public Rebelde cadastrar(@RequestBody @Valid RequestRebelde form){
-        return RebeldeService.cadastrarRebelde(form);
+    public Rebelde cadastrar(@RequestBody @Valid RequestRebelde form, HttpServletRequest req, HttpServletResponse resp){
+        Rebelde rebeldeCadastrado = RebeldeService.cadastrarRebelde(form);
+        String urlRebelde = req.getRequestURL().toString() + "/" + rebeldeCadastrado.getId().toString();
+        resp.addHeader("Rebelde URL", urlRebelde);
+        return rebeldeCadastrado;
     }
 
     @GetMapping("/{id}")
