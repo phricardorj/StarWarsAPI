@@ -86,7 +86,7 @@ Esse trabalho não tinha como requisito o uso de banco de dados, todos os dados 
 }
 ```
 
-## ✅ Tasks:
+## ✅ Tasks and Requirements:
 [✔] - Adicionar rebeldes `POST - endpoint: /rebeldes` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [✔] - Listar Rebeldes  `GET - endpoint: /rebeldes` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [✔] - Selecionar Rebelde pela ID `GET - endpoint: /rebeldes/{id}` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
