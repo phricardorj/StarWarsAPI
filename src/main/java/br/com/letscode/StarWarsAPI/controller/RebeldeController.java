@@ -177,8 +177,8 @@ public class RebeldeController {
         try {
             inventarioReceptor = receptor.getInventario().transfere(itensReceptor, itensFornecedor);
             inventarioFornecedor = fornecedor.getInventario().transfere(itensFornecedor, itensReceptor);
-        } catch (Exception e) {
-            return "Erro ao realizar a operação";
+        } catch (java.lang.Error e) {
+            return "Erro ao realizar a operação!";
         }
 
         receptor.getInventario().atualizarInventario(inventarioReceptor);
