@@ -78,7 +78,7 @@ Este trabalho não tinha como requisito o uso de banco de dados, todos os dados 
     "rebeldeReceptor": "ID_REBELDE_RECEPTOR_AQUI",
     "rebeldeFornecedor": "ID_REBELDE_FORNECEDOR_AQUI",
     "itemReceptor": [{nome: "arma", quantidade: 1}, {nome: "municao", quantidade: 1}],
-    "itemFornecedor": [{nome: "agua", quantidade: 3}, {nome: "comida", quantidade: 1}],
+    "itemFornecedor": [{nome: "agua", quantidade: 3}, {nome: "comida", quantidade: 1}]
 }
 ```
 
