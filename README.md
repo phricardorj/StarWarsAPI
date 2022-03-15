@@ -77,8 +77,8 @@ Este trabalho não tinha como requisito o uso de banco de dados, todos os dados 
 {
     "rebeldeReceptor": "367bbaa0-c87b-4e6a-89c5-18b79269c423",
     "rebeldeFornecedor": "367bbaa0-c87b-4e6a-89c5-18b79269c423",
-    "itemReceptor": [{"nome": "arma", "quantidade": 1}, {"nome": "municao", "quantidade": 1}],
-    "itemFornecedor": [{"nome": "agua", "quantidade": 3}, {"nome": "comida", "quantidade": 1}]
+    "itensReceptor": [{"nome": "arma", "quantidade": 1}, {"nome": "municao", "quantidade": 1}],
+    "itensFornecedor": [{"nome": "agua", "quantidade": 3}, {"nome": "comida", "quantidade": 1}]
 }
 ```
 
