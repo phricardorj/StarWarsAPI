@@ -130,52 +130,18 @@ public class RebeldeService {
         return inventarios;
     }
 
-    public static String negociar(RequestNegociar negociar){
-        log.info("Rebelde para Rebelde (troca)");
+    public static ArrayList<Object> negociar(RequestNegociar negociar){
+       List<Troca> itensFornecedor = negociar.getItensFornecedor();
+       List<Troca> itensReceptor = negociar.getItensReceptor();
 
-        Rebelde fornecedor = null;
-        Rebelde receptor = null;
+       ArrayList<Object> teste = new ArrayList<>();
+       teste.add(itensFornecedor);
+       teste.add(itensReceptor);
 
-        for (Rebelde f : selecionar(negociar.getRebeldeFornecedor())) {
-            fornecedor = f;
-        }
+        System.out.println(itensFornecedor);
+        System.out.println(itensReceptor);
 
-        for (Rebelde r : selecionar(negociar.getRebeldeReceptor())) {
-            receptor = r;
-        }
-
-        if (receptor == null || fornecedor == null) {
-            return "Faltam informações do receptor ou fornecedor";
-        }
-
-        if (receptor.isTraidor() || fornecedor.isTraidor()) {
-            return "Traidor não pode negociar!";
-        }
-
-        String itemFornecedor = negociar.getItemFornecedor();
-        int qtdItemFornecedor = negociar.getQtdItemFornecedor();
-        HashMap<String, Integer> itensFornecedor = new HashMap<>();
-        itensFornecedor.put(itemFornecedor, qtdItemFornecedor);
-
-        String itemReceptor = negociar.getItemReceptor();
-        int qtdItemReceptor = negociar.getQtdItemReceptor();
-        HashMap<String, Integer> itensReceptor = new HashMap<>();
-        itensReceptor.put(itemReceptor, qtdItemReceptor);
-
-        HashMap<String, Integer> inventarioReceptor;
-        HashMap<String, Integer> inventarioFornecedor;
-
-        try {
-            inventarioReceptor = receptor.getInventario().transfere(itensFornecedor, itensReceptor);
-            inventarioFornecedor = fornecedor.getInventario().transfere(itensReceptor, itensFornecedor);
-        } catch (java.lang.Error e) {
-            return "Erro ao realizar a operação!";
-        }
-
-        receptor.getInventario().atualizarInventario(inventarioReceptor);
-        fornecedor.getInventario().atualizarInventario(inventarioFornecedor);
-
-        return "Sucesso!";
+        return teste;
     }
 
 }

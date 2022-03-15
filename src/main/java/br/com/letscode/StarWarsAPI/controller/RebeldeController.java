@@ -64,13 +64,8 @@ public class RebeldeController {
         return RebeldeService.getRelatorio();
     }
 
-    @GetMapping("/inventarios")
-    public List<Inventario> getInventarios(){
-       return RebeldeService.getInventarios();
-    }
-
     @PutMapping("/negociar")
-    public String negociar(@RequestBody @Valid RequestNegociar negociar){
+    public ArrayList<Object> negociar(@RequestBody @Valid RequestNegociar negociar){
         return RebeldeService.negociar(negociar);
     }
 
