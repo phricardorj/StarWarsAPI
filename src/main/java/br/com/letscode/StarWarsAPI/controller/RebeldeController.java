@@ -4,38 +4,25 @@ import br.com.letscode.StarWarsAPI.dto.RequestNegociar;
 import br.com.letscode.StarWarsAPI.dto.RequestRebelde;
 import br.com.letscode.StarWarsAPI.model.*;
 import br.com.letscode.StarWarsAPI.service.RebeldeService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.text.DecimalFormat;
 import java.util.*;
-import java.util.stream.Collectors;
+
 
 @RestController
-@RequestMapping("/rebeldes") 
-@Slf4j
+@RequestMapping("/rebeldes")
 public class RebeldeController {
-    DecimalFormat fmt = new DecimalFormat("0.0");
-
-    // Lista com TODOS - retorna Rebeldes e Traidores!
-    public List<Rebelde> listaRebeldes(){
-        return Rebelde.getRebeldes();
-    }
-
-    // Lista que retorna somente Rebeldes, não retorna Traidores!
     @GetMapping
     public List<Rebelde> getRebeldes(){
-        log.info("Listando todos Rebeldes cadastrados!");
-        return listaRebeldes().stream().filter(rebelde -> !rebelde.isTraidor()).collect(Collectors.toList());
+        return RebeldeService.getRebeldes();
     }
 
     @PostMapping @ResponseStatus(HttpStatus.CREATED)
     public Rebelde cadastrar(@RequestBody @Valid RequestRebelde form, HttpServletRequest req, HttpServletResponse resp){
-        log.info("Rebelde cadastrado!");
         Rebelde rebeldeCadastrado = RebeldeService.cadastrarRebelde(form);
         String urlRebelde = req.getRequestURL().toString() + "/" + rebeldeCadastrado.getId().toString();
         resp.addHeader("Rebelde URL", urlRebelde);
@@ -44,161 +31,47 @@ public class RebeldeController {
 
     @GetMapping("/{id}")
     public List<Rebelde> selecionar(@PathVariable UUID id){
-        log.info("Retornando Rebelde pela sua ID!");
-        return listaRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).collect(Collectors.toList());
+        return RebeldeService.selecionar(id);
     }
 
     @DeleteMapping("/{id}")
     public String deletar(@PathVariable UUID id) {
-        log.info("Rebelde deletado com sucesso!");
-        for (Rebelde r : listaRebeldes()) {
-            if (r.getId().equals(id)) {
-                if(listaRebeldes().remove(r)){
-                    Rebelde.setRebeldes(listaRebeldes());
-                    return "Rebelde " + r.getNome().toUpperCase() + " removido com sucesso!";
-                }
-            }
-        }
-        return null;
+        return RebeldeService.deletar(id);
     }
 
     @GetMapping("/localizacao/{id}")
     public Localizacao localizar(@PathVariable UUID id) {
-        log.info("Retornando localizacao do Rebelde!");
-        return Objects.requireNonNull(listaRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).findFirst().orElse(null)).getLocalizacao();
+        return RebeldeService.localizar(id);
     }
 
     @PutMapping("/localizacao/{id}")
     public Localizacao alterarLocalizacao(@PathVariable UUID id, @RequestBody Localizacao localizacao){
-        log.info("Localizacao rebelde alterada!");
-        Localizacao rebelLoc = Objects.requireNonNull(listaRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).findFirst().orElse(null)).getLocalizacao();
-        rebelLoc.setLatitude(localizacao.getLatitude());
-        rebelLoc.setLongitude(localizacao.getLongitude());
-        rebelLoc.setNome(localizacao.getNome());
-        return rebelLoc;
+        return RebeldeService.alterarLocalizacao(id, localizacao);
     }
 
     @GetMapping("/traidores")
     public List<Rebelde> getTraidores(){
-        log.info("Retornando todos traidores!");
-        return listaRebeldes().stream().filter(Rebelde::isTraidor).collect(Collectors.toList());
+        return RebeldeService.getTraidores();
     }
 
     @PatchMapping("/reportar/{id}")
     public String setTraidor(@PathVariable UUID id){
-        log.info("Rebelde reportado!");
-        for (Rebelde r : listaRebeldes()) {
-            if (r.getId().equals(id)) {
-                int numDenuncias = r.getNumDenuncias();
-                r.setNumDenuncias(numDenuncias += 1);
-                if(numDenuncias == 3){
-                    r.setTraidor(true);
-                    return r.getNome().toUpperCase() + " é um traidor!";
-                } else if (numDenuncias > 3) {
-                    return "Não é possível reportar " + r.getNome().toUpperCase() + ", porque ele já é um Traidor!";
-                } else {
-                    return  r.getNome().toUpperCase() + " recebeu " + numDenuncias + " denuncia(s)!";
-                }
-            }
-        }
-        return null;
+       return RebeldeService.setTraidor(id);
     }
 
     @GetMapping("/relatorio")
     public Relatorio getRelatorio(){
-        log.info("Retornando relatorio!");
-        int numRebeldes = getRebeldes().size();
-        int numTraidores = getTraidores().size();
-        int total = numRebeldes + numTraidores;
-        double porcentagemRebeldes = 0;
-        double porcentagemTraidores = 0;
-
-        if(total > 0) {
-            porcentagemRebeldes = (numRebeldes * 100f) / total;
-            porcentagemTraidores = (numTraidores * 100f) / total;
-        }
-
-        InventarioRelatorio inventarioRelatorio = new InventarioRelatorio(
-                getInventarios().stream().map(Inventario::getQtdArmas).reduce(0, Integer::sum),
-                getInventarios().stream().map(Inventario::getQtdAgua).reduce(0, Integer::sum),
-                getInventarios().stream().map(Inventario::getQtdMunicao).reduce(0, Integer::sum),
-                getInventarios().stream().map(Inventario::getQtdComida).reduce(0, Integer::sum),
-                itensPerdidos()
-        );
-
-        return new Relatorio(fmt.format(porcentagemRebeldes) + "%",
-                fmt.format(porcentagemTraidores) + "%", inventarioRelatorio);
-    }
-
-    @GetMapping("/traidores/itens-perdidos")
-    public int itensPerdidos() {
-        log.info("Exibindo total de itens perdidos!");
-        int num = 0;
-        for (Rebelde r : getTraidores()) {
-         num += r.getInventario().getQtdAgua() + r.getInventario().getQtdMunicao()
-                   + r.getInventario().getQtdComida() + r.getInventario().getQtdAgua();
-        }
-        return num;
+        return RebeldeService.getRelatorio();
     }
 
     @GetMapping("/inventarios")
     public List<Inventario> getInventarios(){
-        log.info("Retornando todos inventarios de todos Rebeldes");
-        List<Inventario> inventarios = new ArrayList<>();
-
-        for (Rebelde r : getRebeldes()) {
-            inventarios.add(r.getInventario());
-        }
-
-        return inventarios;
+       return RebeldeService.getInventarios();
     }
 
     @PutMapping("/negociar")
     public String negociar(@RequestBody @Valid RequestNegociar negociar){
-        log.info("Rebelde para Rebelde (troca)");
-        Rebelde fornecedor = null;
-        Rebelde receptor = null;
-
-        for (Rebelde f : selecionar(negociar.getRebeldeFornecedor())) {
-            fornecedor = f;
-        }
-
-        for (Rebelde r : selecionar(negociar.getRebeldeReceptor())) {
-            receptor = r;
-        }
-
-        if (receptor == null || fornecedor == null) {
-            return "Faltam informações do receptor ou fornecedor";
-        }
-
-        if (receptor.isTraidor() || fornecedor.isTraidor()) {
-            return "Traidor não pode negociar!";
-        }
-
-        String itemFornecedor = negociar.getItemFornecedor();
-        int qtdItemFornecedor = negociar.getQtdItemFornecedor();
-        HashMap<String, Integer> itensFornecedor = new HashMap<>();
-        itensFornecedor.put(itemFornecedor, qtdItemFornecedor);
-
-        String itemReceptor = negociar.getItemReceptor();
-        int qtdItemReceptor = negociar.getQtdItemReceptor();
-        HashMap<String, Integer> itensReceptor = new HashMap<>();
-        itensReceptor.put(itemReceptor, qtdItemReceptor);
-
-        HashMap<String, Integer> inventarioReceptor;
-        HashMap<String, Integer> inventarioFornecedor;
-
-        try {
-            inventarioReceptor = receptor.getInventario().transfere(itensReceptor, itensFornecedor);
-            inventarioFornecedor = fornecedor.getInventario().transfere(itensFornecedor, itensReceptor);
-        } catch (java.lang.Error e) {
-            return "Erro ao realizar a operação!";
-        }
-
-        receptor.getInventario().atualizarInventario(inventarioReceptor);
-        fornecedor.getInventario().atualizarInventario(inventarioFornecedor);
-
-        return "Sucesso!";
+        return RebeldeService.negociar(negociar);
     }
 
 }
