@@ -75,8 +75,8 @@ Este trabalho não tinha como requisito o uso de banco de dados, todos os dados 
 
 ```Json
 {
-    "rebeldeReceptor": "60443e3d-362a-410e-adc9-2c15546b7508",
-    "rebeldeFornecedor": "a4ba7772-77c8-463e-95b1-bc419a8bf0e5",
+    "rebeldeReceptor": "ID_REBELDE_RECEPTOR_AQUI",
+    "rebeldeFornecedor": "ID_REBELDE_FORNECEDOR_AQUI",
     "itemReceptor": "comida",
     "qtdItemReceptor": 8,
     "itemFornecedor": "arma",
