@@ -58,8 +58,8 @@ Este trabalho não tinha como requisito o uso de banco de dados, todos os dados 
 
 ```Json 
 {
-    "porcentagemRebeldes": "80.00%",
-    "porcentagemTraidores": "20.00%",
+    "porcentagemRebeldes": "80.0%",
+    "porcentagemTraidores": "20.0%",
     "inventarioRelatorio": {
         "totalArmas": 4,
         "totalAgua": 12,
@@ -75,14 +75,13 @@ Este trabalho não tinha como requisito o uso de banco de dados, todos os dados 
 
 ```Json
 {
-    "rebeldeReceptor": "ID_REBELDE_RECEPTOR_AQUI",
-    "rebeldeFornecedor": "ID_REBELDE_FORNECEDOR_AQUI",
-    "itemReceptor": "comida",
-    "qtdItemReceptor": 8,
-    "itemFornecedor": "arma",
-    "qtdItemFornecedor": 2
+    "rebeldeReceptor": "367bbaa0-c87b-4e6a-89c5-18b79269c423",
+    "rebeldeFornecedor": "367bbaa0-c87b-4e6a-89c5-18b79269c423",
+    "itemReceptor": [{"nome": "arma", "quantidade": 1}, {"nome": "municao", "quantidade": 1}],
+    "itemFornecedor": [{"nome": "agua", "quantidade": 3}, {"nome": "comida", "quantidade": 1}]
 }
 ```
+
 | ITEM | PONTOS |
 |------|--------|
 | 1 Arma | 4 |
