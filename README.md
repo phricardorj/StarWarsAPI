@@ -101,7 +101,8 @@ Esse trabalho não tinha como requisito o uso de banco de dados, todos os dados 
 [✔] - Retornar o número total de itens perdidos `GET - endpoint: /rebeldes/itens-perdidos` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [✔] - Adicionar URI para retornar pelo header o endereço do rebelde criado. [@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [❌] - Tratamento das Exceções [@Lucas Suplino](https://github.com/LucasSuplino)<br>
-[✔] - Realizar ao menos 1 (um) cenário de testes [@Pedro Ricardo](https://github.com/phricardorj/)
+[✔] - Realizar ao menos 1 (um) cenário de testes [@Pedro Ricardo](https://github.com/phricardorj/)<br>
+[✔] - Adicionado Logs [@Pedro Ricardo](https://github.com/phricardorj/)
 
 ## 🖖 Squad Members<br>
 <table>
