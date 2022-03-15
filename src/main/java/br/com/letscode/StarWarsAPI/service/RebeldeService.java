@@ -166,8 +166,8 @@ public class RebeldeService {
         HashMap<String, Integer> inventarioFornecedor;
 
         try {
-            inventarioReceptor = receptor.getInventario().transfere(itensReceptor, itensFornecedor);
-            inventarioFornecedor = fornecedor.getInventario().transfere(itensFornecedor, itensReceptor);
+            inventarioReceptor = receptor.getInventario().transfere(itensFornecedor, itensReceptor);
+            inventarioFornecedor = fornecedor.getInventario().transfere(itensReceptor, itensFornecedor);
         } catch (java.lang.Error e) {
             return "Erro ao realizar a operação!";
         }
