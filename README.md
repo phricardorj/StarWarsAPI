@@ -89,9 +89,6 @@ Este trabalho não tinha como requisito o uso de banco de dados, todos os dados 
 | 1 Água | 2 |
 | 1 Comida | 1 |
 
-O Rebelde Receptor receberá o item pedido em troca de outro item! O item pedido é o "itemReceptor" e a quantidade "qtdItemReceptor". Para a troca ser aceita, o Rebelde
-Fornecedor deverá receber um item "itemFornecedor" com a quantidade proporcional ao total de pontos do item pedido pelo Rebelde Receptor.
-
 ## ✅ Tasks and Requirements:
 [✔] - Adicionar rebeldes `POST - endpoint: /rebeldes` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [✔] - Listar Rebeldes  `GET - endpoint: /rebeldes` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
