@@ -15,8 +15,6 @@ Este trabalho não tinha como requisito o uso de banco de dados, todos os dados 
 2. (GET) `/rebeldes` - Listar todos os Rebeldes cadastrados
 3. (GET) `/rebeldes/{id}` - Selecionar específico Rebelde pela sua ID
 4. (DELETE) `/rebeldes/{id}` - Deletar específico Rebelde pela sua ID
-5. (GET) `/rebeldes/inventarios` - Listar Inventários de todos os Rebeldes
-6. (GET) `/rebeldes/traidores/itens-perdidos` - Retornar o número total de itens perdidos
 
 ###### Segue abaixo um modelo de Json para cadastrar um novo Rebelde
 
@@ -97,8 +95,6 @@ Este trabalho não tinha como requisito o uso de banco de dados, todos os dados 
 [✔] - Listar Rebeldes traidores `GET - endpoint: /rebeldes/traidores`[@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [✔] - Negociar itens `PUT - endpoint: /rebeldes/negociar` [@Thiago Assi](https://github.com/AloneInAbyss) & [@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [✔] - Relatórios `GET - endpoint: /rebeldes/relatorio` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
-[✔] - Listar Inventários de todos os Rebeldes `GET - endpoint: /rebeldes/inventarios` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
-[✔] - Retornar o número total de itens perdidos `GET - endpoint: /rebeldes/itens-perdidos` [@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [✔] - Adicionar URI para retornar pelo header o endereço do rebelde criado. [@Pedro Ricardo](https://github.com/phricardorj/)<br>
 [❌] - Tratamento das Exceções [@Lucas Suplino](https://github.com/LucasSuplino)<br>
 [✔] - Realizar ao menos 1 (um) cenário de testes [@Pedro Ricardo](https://github.com/phricardorj/)<br>

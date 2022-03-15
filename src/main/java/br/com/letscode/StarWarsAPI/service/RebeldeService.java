@@ -4,24 +4,28 @@ package br.com.letscode.StarWarsAPI.service;
 import br.com.letscode.StarWarsAPI.dto.RequestNegociar;
 import br.com.letscode.StarWarsAPI.model.*;
 import br.com.letscode.StarWarsAPI.dto.RequestRebelde;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.text.DecimalFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Service
+@Service @Slf4j
 public class RebeldeService {
 
     public static List<Rebelde> getRebeldes(){
+        log.info("Listando todos Rebeldes cadastrados!");
         return Rebelde.getRebeldes().stream().filter(rebelde -> !rebelde.isTraidor()).collect(Collectors.toList());
     }
 
     public static List<Rebelde> getTraidores(){
+        log.info("Listando todos Rebeldes traidores!");
         return Rebelde.getRebeldes().stream().filter(Rebelde::isTraidor).collect(Collectors.toList());
     }
 
     public static Rebelde cadastrarRebelde(RequestRebelde form){
+        log.info("Rebelde cadastrado!");
         Genero genero = Genero.valueOf(form.getGenero().toUpperCase().trim());
         Localizacao localizacao = new Localizacao(form.getLocalizacao().getLatitude(), form.getLocalizacao().getLongitude(), form.getLocalizacao().getNome());
         Inventario inventario = new Inventario(form.getInventario().getQtdArmas(), form.getInventario().getQtdAgua(), form.getInventario().getQtdMunicao(), form.getInventario().getQtdComida());
@@ -31,10 +35,12 @@ public class RebeldeService {
     }
 
     public static List<Rebelde> selecionar(UUID id){
+        log.info("Retornando Rebelde pela sua ID!");
         return Rebelde.getRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).collect(Collectors.toList());
     }
 
     public static String deletar(UUID id) {
+        log.info("Rebelde deletado!");
         for (Rebelde r : Rebelde.getRebeldes()) {
             if (r.getId().equals(id)) {
                 if(Rebelde.getRebeldes().remove(r)){
@@ -47,10 +53,12 @@ public class RebeldeService {
     }
 
     public static Localizacao localizar(UUID id) {
+        log.info("Retornando localizacao do Rebelde!");
         return Objects.requireNonNull(Rebelde.getRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).findFirst().orElse(null)).getLocalizacao();
     }
 
     public static Localizacao alterarLocalizacao(UUID id, Localizacao localizacao){
+        log.info("Localizacao rebelde alterada!");
         Localizacao rebelLoc = Objects.requireNonNull(Rebelde.getRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).findFirst().orElse(null)).getLocalizacao();
         rebelLoc.setLatitude(localizacao.getLatitude());
         rebelLoc.setLongitude(localizacao.getLongitude());
@@ -59,6 +67,7 @@ public class RebeldeService {
     }
 
     public static String setTraidor(UUID id){
+        log.info("Rebelde reportado!");
         for (Rebelde r : Rebelde.getRebeldes()) {
             if (r.getId().equals(id)) {
                 int numDenuncias = r.getNumDenuncias();
@@ -77,6 +86,7 @@ public class RebeldeService {
     }
 
     public static Relatorio getRelatorio(){
+        log.info("Retornando relatorio!");
         DecimalFormat fmt = new DecimalFormat("0.0");
         int numRebeldes = getRebeldes().size();
         int numTraidores = getTraidores().size();
@@ -121,6 +131,8 @@ public class RebeldeService {
     }
 
     public static String negociar(RequestNegociar negociar){
+        log.info("Rebelde para Rebelde (troca)");
+
         Rebelde fornecedor = null;
         Rebelde receptor = null;
 
