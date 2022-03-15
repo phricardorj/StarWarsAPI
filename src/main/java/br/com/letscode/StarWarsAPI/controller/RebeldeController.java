@@ -4,6 +4,7 @@ import br.com.letscode.StarWarsAPI.dto.RequestNegociar;
 import br.com.letscode.StarWarsAPI.dto.RequestRebelde;
 import br.com.letscode.StarWarsAPI.model.*;
 import br.com.letscode.StarWarsAPI.service.RebeldeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +16,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/rebeldes")
+@RequestMapping("/rebeldes") 
+@Slf4j
 public class RebeldeController {
     DecimalFormat fmt = new DecimalFormat("0.0");
 
@@ -27,11 +29,13 @@ public class RebeldeController {
     // Lista que retorna somente Rebeldes, não retorna Traidores!
     @GetMapping
     public List<Rebelde> getRebeldes(){
+        log.info("Listando todos Rebeldes cadastrados!");
         return listaRebeldes().stream().filter(rebelde -> !rebelde.isTraidor()).collect(Collectors.toList());
     }
 
     @PostMapping @ResponseStatus(HttpStatus.CREATED)
     public Rebelde cadastrar(@RequestBody @Valid RequestRebelde form, HttpServletRequest req, HttpServletResponse resp){
+        log.info("Rebelde cadastrado!");
         Rebelde rebeldeCadastrado = RebeldeService.cadastrarRebelde(form);
         String urlRebelde = req.getRequestURL().toString() + "/" + rebeldeCadastrado.getId().toString();
         resp.addHeader("Rebelde URL", urlRebelde);
@@ -40,11 +44,13 @@ public class RebeldeController {
 
     @GetMapping("/{id}")
     public List<Rebelde> selecionar(@PathVariable UUID id){
+        log.info("Retornando Rebelde pela sua ID!");
         return listaRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).collect(Collectors.toList());
     }
 
     @DeleteMapping("/{id}")
     public String deletar(@PathVariable UUID id) {
+        log.info("Rebelde deletado com sucesso!");
         for (Rebelde r : listaRebeldes()) {
             if (r.getId().equals(id)) {
                 if(listaRebeldes().remove(r)){
@@ -58,11 +64,13 @@ public class RebeldeController {
 
     @GetMapping("/localizacao/{id}")
     public Localizacao localizar(@PathVariable UUID id) {
+        log.info("Retornando localizacao do Rebelde!");
         return Objects.requireNonNull(listaRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).findFirst().orElse(null)).getLocalizacao();
     }
 
     @PutMapping("/localizacao/{id}")
     public Localizacao alterarLocalizacao(@PathVariable UUID id, @RequestBody Localizacao localizacao){
+        log.info("Localizacao rebelde alterada!");
         Localizacao rebelLoc = Objects.requireNonNull(listaRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).findFirst().orElse(null)).getLocalizacao();
         rebelLoc.setLatitude(localizacao.getLatitude());
         rebelLoc.setLongitude(localizacao.getLongitude());
@@ -72,11 +80,13 @@ public class RebeldeController {
 
     @GetMapping("/traidores")
     public List<Rebelde> getTraidores(){
+        log.info("Retornando todos traidores!");
         return listaRebeldes().stream().filter(Rebelde::isTraidor).collect(Collectors.toList());
     }
 
     @PatchMapping("/reportar/{id}")
     public String setTraidor(@PathVariable UUID id){
+        log.info("Rebelde reportado!");
         for (Rebelde r : listaRebeldes()) {
             if (r.getId().equals(id)) {
                 int numDenuncias = r.getNumDenuncias();
@@ -96,6 +106,7 @@ public class RebeldeController {
 
     @GetMapping("/relatorio")
     public Relatorio getRelatorio(){
+        log.info("Retornando relatorio!");
         int numRebeldes = getRebeldes().size();
         int numTraidores = getTraidores().size();
         int total = numRebeldes + numTraidores;
@@ -121,6 +132,7 @@ public class RebeldeController {
 
     @GetMapping("/traidores/itens-perdidos")
     public int itensPerdidos() {
+        log.info("Exibindo total de itens perdidos!");
         int num = 0;
         for (Rebelde r : getTraidores()) {
          num += r.getInventario().getQtdAgua() + r.getInventario().getQtdMunicao()
@@ -131,6 +143,7 @@ public class RebeldeController {
 
     @GetMapping("/inventarios")
     public List<Inventario> getInventarios(){
+        log.info("Retornando todos inventarios de todos Rebeldes");
         List<Inventario> inventarios = new ArrayList<>();
 
         for (Rebelde r : getRebeldes()) {
@@ -142,6 +155,7 @@ public class RebeldeController {
 
     @PutMapping("/negociar")
     public String negociar(@RequestBody @Valid RequestNegociar negociar){
+        log.info("Rebelde para Rebelde (troca)");
         Rebelde fornecedor = null;
         Rebelde receptor = null;
 
