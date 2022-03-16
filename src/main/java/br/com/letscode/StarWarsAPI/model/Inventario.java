@@ -53,4 +53,55 @@ public class Inventario {
         return pontos;
     }
 
+
+    public boolean removeItem(String nome, int quantidade){
+        switch(nome) {
+            case "arma":
+               if(this.qtdArmas >= quantidade) {
+                   this.qtdArmas -= quantidade;
+                   return true;
+               }
+                break;
+            case "municao":
+                if(this.qtdMunicao >= quantidade) {
+                    this.qtdMunicao -= quantidade;
+                    return true;
+                }
+                break;
+            case "agua":
+                if(this.qtdAgua >= quantidade) {
+                    this.qtdAgua -= quantidade;
+                    return true;
+                }
+                break;
+            case "comida":
+                if(this.qtdComida >= quantidade) {
+                    this.qtdComida -= quantidade;
+                    return true;
+                }
+                break;
+        }
+
+        return false;
+    }
+
+    public boolean addItem(String nome, int quantidade) {
+        switch(nome) {
+            case "arma":
+                this.qtdArmas += quantidade;
+                return true;
+            case "municao":
+                this.qtdMunicao += quantidade;
+                return true;
+            case "agua":
+                this.qtdAgua += quantidade;
+                return true;
+            case "comida":
+                this.qtdComida += quantidade;
+                return true;
+        }
+
+        return false;
+    }
+
 }

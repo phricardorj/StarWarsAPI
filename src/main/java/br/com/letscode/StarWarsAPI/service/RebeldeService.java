@@ -34,9 +34,9 @@ public class RebeldeService {
         return rebelde;
     }
 
-    public static List<Rebelde> selecionar(UUID id){
+    public static Rebelde selecionar(UUID id){
         log.info("Retornando Rebelde pela sua ID!");
-        return Rebelde.getRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).collect(Collectors.toList());
+        return Objects.requireNonNull(Rebelde.getRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).findFirst().orElse(null));
     }
 
     public static String deletar(UUID id) {
@@ -138,7 +138,20 @@ public class RebeldeService {
 
        if (Inventario.verificaElemento(itensFornecedor) && Inventario.verificaElemento(itensReceptor)) {
            if (pontosFornecedor == pontosReceptor){
-               return "Pode trocar!";
+               Rebelde fornecedor = selecionar(negociar.getRebeldeFornecedor());
+               Rebelde receptor = selecionar(negociar.getRebeldeReceptor());
+
+               for (Troca troca : itensFornecedor) {
+                   receptor.getInventario().removeItem(troca.getNome(), troca.getQuantidade());
+                   fornecedor.getInventario().addItem(troca.getNome(), troca.getQuantidade());
+               }
+
+               for (Troca troca : itensReceptor) {
+                   fornecedor.getInventario().removeItem(troca.getNome(), troca.getQuantidade());
+                   receptor.getInventario().addItem(troca.getNome(), troca.getQuantidade());
+               }
+
+               return "Sucesso: Troca efetuada!";
            } else {
                return "Erro: Pontos dos itens nao sao iguais!";
            }
@@ -146,7 +159,5 @@ public class RebeldeService {
            return "Erro: Item nao encontrado!";
        }
     }
-
-
 
 }

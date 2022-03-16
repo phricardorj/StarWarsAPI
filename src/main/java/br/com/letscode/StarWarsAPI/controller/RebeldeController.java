@@ -30,7 +30,7 @@ public class RebeldeController {
     }
 
     @GetMapping("/{id}")
-    public List<Rebelde> selecionar(@PathVariable UUID id){
+    public Rebelde selecionar(@PathVariable UUID id){
         return RebeldeService.selecionar(id);
     }
 
