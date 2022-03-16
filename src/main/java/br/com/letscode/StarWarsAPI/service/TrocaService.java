@@ -11,7 +11,7 @@ import java.util.List;
 import static br.com.letscode.StarWarsAPI.service.RebeldeService.selecionar;
 
 @Service
-public class TradeService {
+public class TrocaService {
 
     public static String negociar(RequestNegociar negociar){
         List<Troca> itensFornecedor = negociar.getItensFornecedor();
