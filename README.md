@@ -51,6 +51,9 @@ Este trabalho não tinha como requisito o uso de banco de dados, todos os dados 
 }
 ```
 
+### Reportar Rebelde
+1. (PATCH) `/rebeldes/reportar/{id}` - Depois de 3 denúncias ele será considerado Traidor!
+
 ### Obter/Gerar Relátorio
 1. (GET) `/rebeldes/relatorio` - Devolve as informações dos Rebeldes, Traidores e muito mais
 
