@@ -1,4 +1,4 @@
-# 🌌 StarWars API Restful 🚀
+# 🌌 Star Wars Resistence Social Network (API Restful) 🚀
 
 Este trabalho não tinha como requisito o uso de banco de dados, todos os dados são armazenados na memória da máquina enquanto a aplicação estiver rodando. Nosso objetivo é consolidar princípios do Spring Boot, por esse motivo, focamos, especificamente, nos conceitos fundamentais desse framework e do Java, como Programação orientada a objetos, endpoints, métodos HTTP e testes unitários.
 
