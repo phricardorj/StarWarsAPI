@@ -30,7 +30,7 @@ public class RebeldeController {
     }
 
     @GetMapping("/{id}")
-    public List<Rebelde> selecionar(@PathVariable UUID id){
+    public Rebelde selecionar(@PathVariable UUID id){
         return RebeldeService.selecionar(id);
     }
 
@@ -62,11 +62,6 @@ public class RebeldeController {
     @GetMapping("/relatorio")
     public Relatorio getRelatorio(){
         return RebeldeService.getRelatorio();
-    }
-
-    @GetMapping("/inventarios")
-    public List<Inventario> getInventarios(){
-       return RebeldeService.getInventarios();
     }
 
     @PutMapping("/negociar")

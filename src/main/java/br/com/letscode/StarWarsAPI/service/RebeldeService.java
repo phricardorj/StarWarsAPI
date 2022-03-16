@@ -34,9 +34,9 @@ public class RebeldeService {
         return rebelde;
     }
 
-    public static List<Rebelde> selecionar(UUID id){
+    public static Rebelde selecionar(UUID id){
         log.info("Retornando Rebelde pela sua ID!");
-        return Rebelde.getRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).collect(Collectors.toList());
+        return Objects.requireNonNull(Rebelde.getRebeldes().stream().filter(rebelde -> rebelde.getId().equals(id)).findFirst().orElse(null));
     }
 
     public static String deletar(UUID id) {
@@ -131,51 +131,33 @@ public class RebeldeService {
     }
 
     public static String negociar(RequestNegociar negociar){
-        log.info("Rebelde para Rebelde (troca)");
+       List<Troca> itensFornecedor = negociar.getItensFornecedor();
+       List<Troca> itensReceptor = negociar.getItensReceptor();
+       int pontosFornecedor = Inventario.getPontos(itensFornecedor);
+       int pontosReceptor = Inventario.getPontos(itensReceptor);
 
-        Rebelde fornecedor = null;
-        Rebelde receptor = null;
+       if (Inventario.verificaElemento(itensFornecedor) && Inventario.verificaElemento(itensReceptor)) {
+           if (pontosFornecedor == pontosReceptor){
+               Rebelde fornecedor = selecionar(negociar.getRebeldeFornecedor());
+               Rebelde receptor = selecionar(negociar.getRebeldeReceptor());
 
-        for (Rebelde f : selecionar(negociar.getRebeldeFornecedor())) {
-            fornecedor = f;
-        }
+               for (Troca troca : itensFornecedor) {
+                   receptor.getInventario().removeItem(troca.getNome(), troca.getQuantidade());
+                   fornecedor.getInventario().addItem(troca.getNome(), troca.getQuantidade());
+               }
 
-        for (Rebelde r : selecionar(negociar.getRebeldeReceptor())) {
-            receptor = r;
-        }
+               for (Troca troca : itensReceptor) {
+                   fornecedor.getInventario().removeItem(troca.getNome(), troca.getQuantidade());
+                   receptor.getInventario().addItem(troca.getNome(), troca.getQuantidade());
+               }
 
-        if (receptor == null || fornecedor == null) {
-            return "Faltam informações do receptor ou fornecedor";
-        }
-
-        if (receptor.isTraidor() || fornecedor.isTraidor()) {
-            return "Traidor não pode negociar!";
-        }
-
-        String itemFornecedor = negociar.getItemFornecedor();
-        int qtdItemFornecedor = negociar.getQtdItemFornecedor();
-        HashMap<String, Integer> itensFornecedor = new HashMap<>();
-        itensFornecedor.put(itemFornecedor, qtdItemFornecedor);
-
-        String itemReceptor = negociar.getItemReceptor();
-        int qtdItemReceptor = negociar.getQtdItemReceptor();
-        HashMap<String, Integer> itensReceptor = new HashMap<>();
-        itensReceptor.put(itemReceptor, qtdItemReceptor);
-
-        HashMap<String, Integer> inventarioReceptor;
-        HashMap<String, Integer> inventarioFornecedor;
-
-        try {
-            inventarioReceptor = receptor.getInventario().transfere(itensFornecedor, itensReceptor);
-            inventarioFornecedor = fornecedor.getInventario().transfere(itensReceptor, itensFornecedor);
-        } catch (java.lang.Error e) {
-            return "Erro ao realizar a operação!";
-        }
-
-        receptor.getInventario().atualizarInventario(inventarioReceptor);
-        fornecedor.getInventario().atualizarInventario(inventarioFornecedor);
-
-        return "Sucesso!";
+               return "Sucesso: Troca efetuada!";
+           } else {
+               return "Erro: Pontos dos itens nao sao iguais!";
+           }
+       } else {
+           return "Erro: Item nao encontrado!";
+       }
     }
 
 }
