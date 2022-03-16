@@ -4,6 +4,8 @@ import br.com.letscode.StarWarsAPI.dto.RequestNegociar;
 import br.com.letscode.StarWarsAPI.dto.RequestRebelde;
 import br.com.letscode.StarWarsAPI.model.*;
 import br.com.letscode.StarWarsAPI.service.RebeldeService;
+import br.com.letscode.StarWarsAPI.service.RelatorioService;
+import br.com.letscode.StarWarsAPI.service.TradeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -61,12 +63,12 @@ public class RebeldeController {
 
     @GetMapping("/relatorio")
     public Relatorio getRelatorio(){
-        return RebeldeService.getRelatorio();
+        return RelatorioService.getRelatorio();
     }
 
     @PutMapping("/negociar")
     public String negociar(@RequestBody @Valid RequestNegociar negociar){
-        return RebeldeService.negociar(negociar);
+        return TradeService.negociar(negociar);
     }
 
 }
