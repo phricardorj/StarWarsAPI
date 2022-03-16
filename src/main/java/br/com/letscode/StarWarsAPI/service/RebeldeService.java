@@ -140,7 +140,7 @@ public class RebeldeService {
 
         for (Troca trocaFornecedor : itensFornecedor) {
             for (Troca trocaReceptor : itensReceptor) {
-                if (verificaElemento(trocaFornecedor.getNome()) && verificaElemento(trocaReceptor.getNome())){
+                if (Inventario.verificaElemento(trocaFornecedor.getNome()) && Inventario.verificaElemento(trocaReceptor.getNome())){
                     if (Objects.equals(trocaFornecedor.getNome(), trocaReceptor.getNome())) {
                         mesmoItem = true;
                         break;
@@ -154,11 +154,11 @@ public class RebeldeService {
         if(!nomeErrado) {
             if(!mesmoItem) {
                 for (Troca trocaFornecedor : itensFornecedor) {
-                    pontosFornecedor += getPoints(trocaFornecedor.getNome(), trocaFornecedor.getQuantidade());
+                    pontosFornecedor += Inventario.getPoints(trocaFornecedor.getNome(), trocaFornecedor.getQuantidade());
                 }
 
                 for (Troca trocaReceptor : itensReceptor) {
-                    pontosReceptor += getPoints(trocaReceptor.getNome(), trocaReceptor.getQuantidade());
+                    pontosReceptor += Inventario.getPoints(trocaReceptor.getNome(), trocaReceptor.getQuantidade());
                 }
 
                 if(pontosFornecedor == pontosReceptor) {
@@ -174,32 +174,6 @@ public class RebeldeService {
         }
 
        return null;
-    }
-
-    private static int getPoints(String nome, int quantidade) {
-        int pontos = 0;
-
-        switch(nome) {
-                case "arma":
-                    pontos += quantidade * 4;
-                    break;
-                case "municao":
-                    pontos += quantidade * 3;
-                    break;
-                case "agua":
-                    pontos += quantidade * 2;
-                    break;
-                case "comida":
-                    pontos += quantidade;
-                    break;
-        }
-
-        return pontos;
-    }
-
-    private static boolean verificaElemento(String nome){
-       String item = nome.trim().toLowerCase();
-       return item.equals("arma") || item.equals("municao") || item.equals("comida") || item.equals("agua");
     }
 
 }
