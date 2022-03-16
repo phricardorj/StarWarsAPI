@@ -133,47 +133,20 @@ public class RebeldeService {
     public static String negociar(RequestNegociar negociar){
        List<Troca> itensFornecedor = negociar.getItensFornecedor();
        List<Troca> itensReceptor = negociar.getItensReceptor();
-       int pontosFornecedor = 0;
-       int pontosReceptor = 0;
-       boolean mesmoItem = false; // serve para verificar se há item igual entre os dois
-       boolean nomeErrado = false; // serve para verificar se o nome do item está errado
+       int pontosFornecedor = Inventario.getPontos(itensFornecedor);
+       int pontosReceptor = Inventario.getPontos(itensReceptor);
 
-        for (Troca trocaFornecedor : itensFornecedor) {
-            for (Troca trocaReceptor : itensReceptor) {
-                if (Inventario.verificaElemento(trocaFornecedor.getNome()) && Inventario.verificaElemento(trocaReceptor.getNome())){
-                    if (Objects.equals(trocaFornecedor.getNome(), trocaReceptor.getNome())) {
-                        mesmoItem = true;
-                        break;
-                    }
-                } else {
-                    nomeErrado = true;
-                }
-            }
-        }
-
-        if(!nomeErrado) {
-            if(!mesmoItem) {
-                for (Troca trocaFornecedor : itensFornecedor) {
-                    pontosFornecedor += Inventario.getPoints(trocaFornecedor.getNome(), trocaFornecedor.getQuantidade());
-                }
-
-                for (Troca trocaReceptor : itensReceptor) {
-                    pontosReceptor += Inventario.getPoints(trocaReceptor.getNome(), trocaReceptor.getQuantidade());
-                }
-
-                if(pontosFornecedor == pontosReceptor) {
-                    System.out.println("Podem trocar!");
-                } else {
-                    System.out.println("Troca incompativel! Verificar pontos!");
-                }
-            } else {
-                System.out.println("Nao faz sentido trocar por itens iguais!");
-            }
-        } else {
-            System.out.println("Item para troca não existe!");
-        }
-
-       return null;
+       if (Inventario.verificaElemento(itensFornecedor) && Inventario.verificaElemento(itensReceptor)) {
+           if (pontosFornecedor == pontosReceptor){
+               return "Pode trocar!";
+           } else {
+               return "Erro: Pontos dos itens nao sao iguais!";
+           }
+       } else {
+           return "Erro: Item nao encontrado!";
+       }
     }
+
+
 
 }

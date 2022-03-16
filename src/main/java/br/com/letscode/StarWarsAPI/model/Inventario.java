@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.HashMap;
+import java.util.List;
 
 @Getter @Setter
 public class Inventario {
@@ -20,30 +21,36 @@ public class Inventario {
         this.qtdComida = qtdComida;
     }
 
-    public static int getPoints(String nome, int quantidade) {
+    public static boolean verificaElemento(List<Troca> trocaList){
+        for (Troca troca : trocaList) {
+            String item = troca.getNome().trim().toLowerCase();
+            return item.equals("arma") || item.equals("municao") || item.equals("comida") || item.equals("agua");
+        }
+
+        return false;
+    }
+
+    public static int getPontos(List<Troca> trocaList){
         int pontos = 0;
 
-        switch(nome) {
-            case "arma":
-                pontos += quantidade * 4;
-                break;
-            case "municao":
-                pontos += quantidade * 3;
-                break;
-            case "agua":
-                pontos += quantidade * 2;
-                break;
-            case "comida":
-                pontos += quantidade;
-                break;
+        for (Troca troca : trocaList) {
+            switch(troca.getNome()) {
+                case "arma":
+                    pontos += troca.getQuantidade() * 4;
+                    break;
+                case "municao":
+                    pontos += troca.getQuantidade() * 3;
+                    break;
+                case "agua":
+                    pontos += troca.getQuantidade() * 2;
+                    break;
+                case "comida":
+                    pontos += troca.getQuantidade();
+                    break;
+            }
         }
 
         return pontos;
-    }
-
-    public static boolean verificaElemento(String nome){
-        String item = nome.trim().toLowerCase();
-        return item.equals("arma") || item.equals("municao") || item.equals("comida") || item.equals("agua");
     }
 
 }
