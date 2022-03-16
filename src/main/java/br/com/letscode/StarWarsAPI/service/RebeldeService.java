@@ -130,18 +130,76 @@ public class RebeldeService {
         return inventarios;
     }
 
-    public static ArrayList<Object> negociar(RequestNegociar negociar){
+    public static String negociar(RequestNegociar negociar){
        List<Troca> itensFornecedor = negociar.getItensFornecedor();
        List<Troca> itensReceptor = negociar.getItensReceptor();
+       int pontosFornecedor = 0;
+       int pontosReceptor = 0;
+       boolean mesmoItem = false; // serve para verificar se há item igual entre os dois
+       boolean nomeErrado = false; // serve para verificar se o nome do item está errado
 
-       ArrayList<Object> teste = new ArrayList<>();
-       teste.add(itensFornecedor);
-       teste.add(itensReceptor);
+        for (Troca trocaFornecedor : itensFornecedor) {
+            for (Troca trocaReceptor : itensReceptor) {
+                if (verificaElemento(trocaFornecedor.getNome()) && verificaElemento(trocaReceptor.getNome())){
+                    if (Objects.equals(trocaFornecedor.getNome(), trocaReceptor.getNome())) {
+                        mesmoItem = true;
+                        break;
+                    }
+                } else {
+                    nomeErrado = true;
+                }
+            }
+        }
 
-        System.out.println(itensFornecedor);
-        System.out.println(itensReceptor);
+        if(!nomeErrado) {
+            if(!mesmoItem) {
+                for (Troca trocaFornecedor : itensFornecedor) {
+                    pontosFornecedor += getPoints(trocaFornecedor.getNome(), trocaFornecedor.getQuantidade());
+                }
 
-        return teste;
+                for (Troca trocaReceptor : itensReceptor) {
+                    pontosReceptor += getPoints(trocaReceptor.getNome(), trocaReceptor.getQuantidade());
+                }
+
+                if(pontosFornecedor == pontosReceptor) {
+                    System.out.println("Podem trocar!");
+                } else {
+                    System.out.println("Troca incompativel! Verificar pontos!");
+                }
+            } else {
+                System.out.println("Nao faz sentido trocar por itens iguais!");
+            }
+        } else {
+            System.out.println("Item para troca não existe!");
+        }
+
+       return null;
+    }
+
+    private static int getPoints(String nome, int quantidade) {
+        int pontos = 0;
+
+        switch(nome) {
+                case "arma":
+                    pontos += quantidade * 4;
+                    break;
+                case "municao":
+                    pontos += quantidade * 3;
+                    break;
+                case "agua":
+                    pontos += quantidade * 2;
+                    break;
+                case "comida":
+                    pontos += quantidade;
+                    break;
+        }
+
+        return pontos;
+    }
+
+    private static boolean verificaElemento(String nome){
+       String item = nome.trim().toLowerCase();
+       return item.equals("arma") || item.equals("municao") || item.equals("comida") || item.equals("agua");
     }
 
 }

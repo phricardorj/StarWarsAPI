@@ -65,7 +65,7 @@ public class RebeldeController {
     }
 
     @PutMapping("/negociar")
-    public ArrayList<Object> negociar(@RequestBody @Valid RequestNegociar negociar){
+    public String negociar(@RequestBody @Valid RequestNegociar negociar){
         return RebeldeService.negociar(negociar);
     }
 
