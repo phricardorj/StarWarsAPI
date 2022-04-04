@@ -1,5 +1,6 @@
 # 🌌 Star Wars Resistence Social Network (API Restful) 🚀 
-<img alt="Badge Adicionado" title="Adicionado" src="https://img.shields.io/badge/Version-1.0-green">
+![Version](https://img.shields.io/badge/Version-1.0-green "Version")
+
 
 Este trabalho não tinha como requisito o uso de banco de dados, todos os dados são armazenados na memória da máquina enquanto a aplicação estiver rodando. Nosso objetivo é consolidar princípios do Spring Boot, por esse motivo, focamos, especificamente, nos conceitos fundamentais desse framework e do Java, como Programação orientada a objetos, endpoints, métodos HTTP e testes unitários.
 
